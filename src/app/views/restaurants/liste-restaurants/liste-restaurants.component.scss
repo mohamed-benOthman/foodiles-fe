@@ -1,0 +1,30 @@
+.text-ellipsis--2{
+  text-overflow:ellipsis;
+  overflow:hidden;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+}
+
+.fa:hover{
+  cursor: pointer;
+  color: #dc0934;
+}
+table {
+  width: 100% !important;
+}
+
+th,td,tr {
+  width: 100% !important;
+}
+/*
+tr{
+  td:hover{
+    color: #dc0934;
+    cursor: pointer;
+  }
+}
+*/
+
+

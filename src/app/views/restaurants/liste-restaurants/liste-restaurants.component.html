@@ -1,0 +1,131 @@
+<div class="card" *ngIf="!isLoading">
+  <div class="card-header ">
+    <div class="row">
+      <div class="col-sm-6 col-12">
+        Liste des Restaurants
+      </div>
+      <div class="col-sm-6 col-12">
+        <div class="row">
+        <div class="col-9">
+          <input   [(ngModel)]="restaurantName"  [ngModelOptions]="{standalone: true}" type="text"  id="text-input" name="text-input" class="form-control " placeholder="Tapez le nom du restaurant">
+
+        </div>
+
+        <div class="col-3">
+          <button type="button" class="btn btn-block btn-primary" (click)="restaurantSearch()">Chercher</button>
+        </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-sm-3 col-12">
+        <div class="form-group row">
+          <label class="col-sm-4 col-form-label" for="select1">Type de Cuisine</label>
+          <div class="col-md-8">
+            <select id="typeCuisine" [(ngModel)]="selectedCuisineType" name="typeCuisine" class="form-control">
+              <option value="">Type de Cuisine</option>
+              <option *ngFor="let type of typeCuisineList$ | async" [value]="type.Libelle">{{type.Libelle}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3 col-12" >
+        <div class="form-group row">
+          <label class="col-sm-4 col-form-label" for="select1" >Exigence</label>
+          <div class="col-md-8">
+            <select id="exigenceAlimentaire" [(ngModel)]="selectedExigenceAlimentaire" name="exigenceAlimentaire" class="form-control">
+              <option value="">Exigence Alimentaire</option>
+              <option *ngFor="let type of exigenceAlimentaireList$ | async" [value]="type.Libelle">{{type.Libelle}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-3 col-12">
+        <div class="form-group row">
+          <label class="col-sm-4 col-form-label" for="select1">Note</label>
+          <div class="col-md-8">
+            <select id="note" [(ngModel)]="selectedNote" name="note" class="form-control">
+              <option value="-1">Choisir une note</option>
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3 col-12">
+        <div class="row">
+          <div class="col-6">     <button type="button" class="btn btn-block btn-primary" (click)="filtrer()">Filtrer</button></div>
+
+          <div class="col-6">     <button type="button" class="btn btn-block btn-primary" (click)="reset()">Réinitialiser</button></div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+  <div class="card-body ">
+    <table class="table table-bordered table-responsive "  style="width:100%;">
+
+      <thead style="width: 100% !important ">
+      <tr>
+        <th>Nom</th>
+        <th>Adresse</th>
+        <th>Code Postale</th>
+        <th>Note</th>
+       <!-- <th>Description</th>-->
+        <th>Type de Cuisine</th>
+        <th>Exigences Alimentaires</th>
+        <th>Téléphone1</th>
+        <th>Téléphone2</th>
+
+        <th>Email</th>
+        <th>Site</th>
+        <th>Etoiles Michelin</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody style="width: 100% !important">
+       <tr *ngFor="let item of pageSlice   ">
+         <td>{{item.Nom}}</td>
+         <td>{{item.Adresse}}</td>
+         <td>{{item.CodePostal}}</td>
+         <td>{{item.Note}}</td>
+       <!--  <td ><div class="text-ellipsis&#45;&#45;2 ">{{item.Description}}</div></td>-->
+         <td><ul><li *ngFor="let type of item.types ">{{type.Libelle}}</li></ul></td>
+         <td><ul><li *ngFor="let type of item.exigenceAlims ">{{type.Libelle}}</li></ul></td>
+         <td>{{item.Telephone}}</td>
+         <td>{{item.Telephone2}}</td>
+
+         <td style="width: 100px">{{item.Mail}}</td>
+         <td>{{item.Site}}</td>
+         <td>{{item.guideMichelins}}</td>
+          <td>
+          <div class="row pl-2 ">
+            <i (click)="navigateToRestaurant(item.idRestaurant)" class="fa fa-eye mr-2" aria-hidden="true"></i>
+            <i class="fa fa-cog mr-2" aria-hidden="true"></i>
+         <!--   <i class="fa fa-trash" aria-hidden="true"></i>-->
+          </div>
+          </td>
+       </tr>
+      </tbody>
+    </table>
+
+    <mat-paginator
+
+      [length]="restaurantsLength"
+      [pageSizeOptions]="[5, 10, 100]"
+      [pageSize]="this.pageSize"
+      (page)="onPageChange($event)"
+
+    >
+    </mat-paginator>
+  </div>
+</div>
+<div *ngIf="isLoading" class="row justify-content-center"><app-spinner></app-spinner></div>
+

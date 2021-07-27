@@ -1,0 +1,164 @@
+<div class="card" *ngIf="!isLoading">
+  <div class="card-header ">
+    <div class="row">
+      <div class="col-sm-6 col-12">
+       <h5>{{restaurantDetails.Nom}}</h5>
+      </div>
+
+    </div>
+    <br>
+
+  </div>
+  <div class="card-body ">
+    <div class="row">
+      <div class="col-sm-6 col-12">
+        <h6>Nom du restaurant</h6>
+      </div>
+      <div class="col-sm-6 col-12">
+        {{restaurantDetails.Nom}}
+      </div>
+      <div class="col-sm-6 col-12">
+        <h6>Adresse du restaurant</h6>
+      </div>
+      <div class="col-sm-6 col-12">
+        {{restaurantDetails.Adresse}}
+      </div>
+      <div class="col-sm-6 col-12">
+        <h6>Code Postale</h6>
+      </div>
+      <div class="col-sm-6 col-12">
+        {{restaurantDetails.CodePostal}}
+      </div>
+      <div class="col-sm-6 col-12">
+        <h6>Note</h6>
+      </div>
+      <div class="col-sm-6 col-12">
+        {{restaurantDetails.Note}}
+      </div>
+      <div class="col-sm-6 col-12">
+        <h6>Description</h6>
+      </div>
+      <div class="col-sm-6 col-12">
+        {{restaurantDetails.Description}}
+      </div>
+      <div class="col-sm-6 col-12">
+        <h6>Telephone1</h6>
+      </div>
+      <div class="col-sm-6 col-12">
+        {{restaurantDetails.Telephone}}
+      </div>
+
+      <div class="col-sm-6 col-12">
+        <h6>Telephone2</h6>
+      </div>
+      <div class="col-sm-6 col-12">
+        {{restaurantDetails.Telephone2}}
+      </div>
+      <div class="col-sm-6 col-12">
+        <h6>Tranche Prix</h6>
+      </div>
+      <div class="col-sm-6 col-12">
+        {{restaurantDetails.tranchePrix.libelle}}
+      </div>
+      <div class="col-sm-6 col-12">
+        <h6>Fax</h6>
+      </div>
+      <div class="col-sm-6 col-12">
+        {{restaurantDetails.Fax}}
+      </div>
+      <div class="col-sm-6 col-12">
+        <h6>Horaire</h6>
+      </div>
+      <div class="col-sm-6 col-12">
+        {{restaurantDetails.Horaire}}
+      </div>
+      <div class="col-sm-6 col-12">
+        <h6>Mail</h6>
+      </div>
+      <div class="col-sm-6 col-12">
+        {{restaurantDetails.Mail}}
+      </div>
+      <div class="col-sm-6 col-12">
+        <h6>Site</h6>
+      </div>
+      <div class="col-sm-6 col-12">
+        {{restaurantDetails.Site}}
+      </div>
+
+      <div class="col-sm-6 col-12">
+        <h6>Type de restaurant</h6>
+      </div>
+      <div class="col-sm-6 col-12">
+        <ul><li *ngFor="let type of restaurantDetails.types ">{{type.Libelle}}</li></ul>
+      </div>
+      <div class="col-sm-6 col-12">
+        <h6>Ambiance</h6>
+      </div>
+      <div class="col-sm-6 col-12">
+        <ul><li *ngFor="let type of restaurantDetails.cadreAmbiances ">{{type.libelle}}</li></ul>
+      </div>
+      <div class="col-sm-6 col-12">
+        <h6>Exigences Alimentaire</h6>
+      </div>
+      <div class="col-sm-6 col-12">
+        <ul><li *ngFor="let type of restaurantDetails.exigenceAlims ">{{type.Libelle}}</li></ul>
+      </div>
+      <div class="col-sm-6 col-12">
+        <h6>Moyens Paiements</h6>
+      </div>
+      <div class="col-sm-6 col-12">
+        <ul><li *ngFor="let type of restaurantDetails.moyenPaiements ">{{type.libelle}}</li></ul>
+      </div>
+      <div class="col-sm-6 col-12">
+        <h6>Les photos</h6>
+      </div>
+      <div class="col-sm-6 col-12">
+
+          <div class="card">
+
+            <div class="card-body">
+              <carousel [interval]="false">
+                <slide  *ngFor="let type of restaurantDetails.photos">
+                  <img   [src]="type.content" alt="First slide" style="display: block; width: 100%; max-height: 300px">
+                </slide>
+
+              </carousel>
+            </div>
+          </div>
+      </div>
+      <div class="col-sm-6 col-12">
+        <h6>Les Evenements</h6>
+      </div>
+      <div class="col-sm-6 col-12">
+
+        <div class="card" *ngFor="let item of restaurantDetails.events">
+
+          <div class="card-body"  >
+           <p><b>{{item.titre}}</b></p>
+            <p>{{item.details}}</p>
+            <p>{{item.dateDebut.split(' ')[0]+' -> '+item.dateFin.split(' ')[0]}}</p>
+            <div></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-12">
+        <h6>Les Bons Plans</h6>
+      </div>
+      <div class="col-sm-6 col-12">
+
+        <div class="card" *ngFor="let item of restaurantDetails.bonPlans">
+
+          <div class="card-body"  >
+            <p><b>{{item.titre}}</b></p>
+            <p>{{item.dateDebut.split(' ')[0]+' -> '+item.dateFin.split(' ')[0]}}</p>
+            <div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--<img [src]="this.imageService.getImageSrc('uploads_foo/foodiles_55/photoUserResto/259_1452347135018') | async"  alt="Red dot"/>-->
+
+<div *ngIf="isLoading" class="row justify-content-center"><app-spinner></app-spinner></div>
+

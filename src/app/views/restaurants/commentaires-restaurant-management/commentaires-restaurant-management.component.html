@@ -1,0 +1,120 @@
+
+
+  <div class="card" *ngIf="!isLoading">
+    <div class="card-header ">
+      <div class="row">
+        <div class="col-md-6 col-12">
+          <h5>{{restaurantDetails.Nom}}</h5>
+        </div>
+
+      </div>
+      <br>
+
+    </div>
+    <div class="card-body ">
+      <div class="card-body ">
+        <div class="row">
+          <div  class="col-md-6 col-12 mb-2" *ngFor="let item of restaurantDetails.commentaires">
+            <div class="card">
+              <div class="card-header">
+                <div class="row">
+                  <div class="col-md-6 col-12 align-self-center">  <h6>{{item.titre ? item.titre :  '***'}}</h6></div>
+
+
+                  <div class="col-md-6 col-12">
+                    <div class="row">
+                      <div class="col-6">
+                        <button type="button" class="btn btn-block btn-primary" (click)="openDialog(item.idCommentaire)">Supprimer</button>
+
+                      </div>
+                      <div class="col-6">
+                        <button type="button" class="btn btn-block btn-primary" (click)="navigateToCommentaireModify(item.idCommentaire)">Modifier</button>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <div class="card-body">
+                <p><b>{{item.idUser.pseudo ? item.idUser.pseudo:'***'  }}: </b>{{item.comment}}</p>
+                <p><b>Date de commentaire : </b>{{item.dateComment ? item.dateComment.split(' ')[0]: '***'}}</p>
+                <b>Les notes:</b>
+                <div class="row">
+                  <div class="col-6 align-self-center">
+                    Accueil
+                  </div>
+                  <div class="col-6 ">
+                    <app-rating [rate]="item.idRate.Accueil"></app-rating>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-6 align-self-center">
+                    Service
+                  </div>
+                  <div class="col-6">
+                    <app-rating [rate]="item.idRate.Service"></app-rating>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-6 align-self-center">
+                    Prix
+                  </div>
+                  <div class="col-6">
+                    <app-rating [rate]="item.idRate.Price"></app-rating>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-6 align-self-center">
+                    Repas
+                  </div>
+                  <div class="col-6">
+                    <app-rating [rate]="item.idRate.Meal"></app-rating>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-6 align-self-center">
+                    Repas
+                  </div>
+                  <div class="col-6">
+                    <app-rating [rate]="item.idRate.Meal"></app-rating>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-6 align-self-center">
+                    Ponctualite
+                  </div>
+                  <div class="col-6">
+                    <app-rating [rate]="item.idRate.Speed"></app-rating>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-6 align-self-center">
+                    Le cadre
+                  </div>
+                  <div class="col-6">
+                    <app-rating [rate]="item.idRate.Setting"></app-rating>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-6 align-self-center">
+                    La Moyenne
+                  </div>
+                  <div class="col-6">
+                    <app-rating [rate]="item.idRate.avg"></app-rating>
+                  </div>
+                </div>
+
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+    </div>
+  </div>
+
+  <div *ngIf="isLoading" class="row justify-content-center"><app-spinner></app-spinner></div>
+

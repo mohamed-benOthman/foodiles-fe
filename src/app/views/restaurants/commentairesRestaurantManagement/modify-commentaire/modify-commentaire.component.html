@@ -1,0 +1,30 @@
+<div *ngIf="!isLoading" class="row justify-content-center">
+  <div class="card w-50">
+    <div class="card-header">
+      <strong>{{commentaireDetails.titre }}</strong>
+
+    </div>
+    <div class="card-body">
+      <div class="form-group">
+        <label for="company">Titre</label>
+        <input type="text" class="form-control" id="company" [(ngModel)]="commentaireDetails.titre" placeholder="Enter your company name">
+      </div>
+      <div class="form-group">
+        <label>Commentaire</label>
+        <textarea id="textarea-input" name="textarea-input" [(ngModel)]="commentaireDetails.comment" rows="9" class="form-control" placeholder="Content.."></textarea>
+      </div>
+      <div class="row ">
+        <div class="col-md-6 col-12 mb-md-0 mb-2">
+          <button type="button" class="btn btn-block btn-primary" (click)="navigateBack()">Retourner</button>
+
+        </div>
+        <div class="col-md-6 col-12">
+          <button type="button" class="btn btn-block btn-primary" (click)="modifyCommentaire(commentaireDetails.idCommentaire, commentaireDetails.titre,commentaireDetails.comment )">Modifier</button>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<div *ngIf="isLoading" class="row justify-content-center"><app-spinner></app-spinner></div>

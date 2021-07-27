@@ -1,0 +1,69 @@
+<div class="card" *ngIf="!isLoading">
+  <div class="card-header ">
+    <div class="row">
+      <div class="col-sm-6 col-12">
+        Liste des Restaurants
+      </div>
+      <div class="col-sm-6 col-12">
+        <div class="row">
+          <div class="col-9">
+            <input   [(ngModel)]="restaurantName"  [ngModelOptions]="{standalone: true}" type="text"  id="text-input" name="text-input" class="form-control " placeholder="Tapez le nom du restaurant">
+
+          </div>
+
+          <div class="col-3">
+            <button type="button" class="btn btn-block btn-primary" (click)="restaurantSearch()">Chercher</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+  </div>
+  <div class="card-body ">
+    <table class="table table-bordered "  style="width:100%;">
+
+
+      <tr>
+        <th>Nom</th>
+        <th>Nombre d'images</th>
+
+        <th>Actions</th>
+      </tr>
+
+
+      <tr *ngFor="let item of pageSlice   ">
+        <td>{{item.Nom}}</td>
+        <td>{{item.photos.length}}</td>
+
+        <td>
+          <div class="row pl-2 ">
+            <i (click)="navigateToRestaurant(item.idRestaurant)" class="fa fa-cog mr-2" aria-hidden="true"></i>
+          </div>
+        </td>
+      </tr>
+
+    </table>
+    <!--    <ul class="pagination">
+          <li class="page-item"><a class="page-link" href="#">Prev</a></li>
+          <li class="page-item active">
+            <a class="page-link" href="#">1</a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#">4</a></li>
+          <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>-->
+    <mat-paginator
+
+      [length]="restaurantsLength"
+      [pageSizeOptions]="[5, 10, 100]"
+      [pageSize]="this.pageSize"
+      (page)="onPageChange($event)"
+
+    >
+    </mat-paginator>
+  </div>
+</div>
+<div *ngIf="isLoading" class="row justify-content-center"><app-spinner></app-spinner></div>
+

@@ -1,0 +1,16 @@
+<div class="pb-4 pt-4 pr-5 pl-5 ">
+<h5>{{data.text}}</h5>
+  <br>
+  <div class="row">
+    <div class="col-sm-6 col-12">
+      <button type="button" class="btn btn-block btn-primary" (click)="close()" >Fermer</button>
+
+    </div>
+    <div class="col-sm-6 col-12">
+      <button type="button" class="btn btn-block btn-primary" (click)="data.roleFunction(this.dialogRef)">{{data.buttonText}}</button>
+
+    </div>
+  </div>
+
+</div>
+

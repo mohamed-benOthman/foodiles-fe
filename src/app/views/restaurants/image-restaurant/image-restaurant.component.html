@@ -1,0 +1,46 @@
+<div class="card" *ngIf="!isLoading">
+  <div class="card-header ">
+    <div class="row">
+      <div class="col-sm-6 col-12">
+        <h5>{{restaurantDetails.Nom}}</h5>
+      </div>
+      <div class="col-sm-6 col-12" >
+        <div class="col-10">
+          <input class="form-control "   type="file" name="file" (change)="uploadFile($event)">
+        </div>
+        <div class="col-2 mt-2" style="flex-direction: column" style="padding:0px !important">
+          <span  class="w-100 pl-4">{{this.uploadPourcentage}}%</span>
+        </div>
+      </div>
+    </div>
+    <br>
+
+  </div>
+  <div class="card-body ">
+    <div class="row">
+    <div class="col-sm-6 col-12 mb-4" *ngFor="let type of restaurantDetails.photos">
+      <div class="image-area">
+        <img [src]="type.content"   alt="Preview">
+        <a (click)="openDialog(type.idPhoto)" class="remove-image"  style="display: inline;">&#215;</a>
+      </div>
+    </div>
+
+
+
+<!--        <div class="card">
+
+          <div class="card-body">
+            <carousel [interval]="false">
+              <slide  *ngFor="let type of restaurantDetails.photos">
+                <img   [src]="type.content" alt="First slide" style="display: block; width: 100%; max-height: 300px">
+              </slide>
+
+            </carousel>
+          </div>
+        </div>-->
+    </div>
+  </div>
+</div>
+
+<div *ngIf="isLoading" class="row justify-content-center"><app-spinner></app-spinner></div>
+
