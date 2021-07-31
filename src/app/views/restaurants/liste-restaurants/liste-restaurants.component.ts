@@ -8,6 +8,8 @@ import {CuisineType} from '../../../interfaces/cuisineType.model';
 import {ExigenceAlimentaire} from '../../../interfaces/exigenceAlimentaire';
 import {ExigenceAlimentaireService} from '../../../services/exigence-alimentaire.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {ModalComponent} from '../../../components/modal/modal.component';
+import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-liste-restaurants',
@@ -19,6 +21,7 @@ export class ListeRestaurantsComponent implements OnInit {
   constructor(private restaurantService: RestaurantsService,
               private exigenceAlimentaireService: ExigenceAlimentaireService ,
               private typeCuisineService: TypeCuisineService,
+              public dialog: MatDialog,
               private router: Router,
               private ActivateRoute: ActivatedRoute) { }
   restaurantList$: Observable<any>;
@@ -34,6 +37,7 @@ export class ListeRestaurantsComponent implements OnInit {
   isLoading = true;
   restaurantName: string;
   fullRestaurantList: any = [];
+  restaurantToDeleteId : any;
   ngOnInit(): void {
 
     this.restaurantList$ = this.restaurantService.getAllRestaurants();
@@ -126,6 +130,11 @@ export class ListeRestaurantsComponent implements OnInit {
   navigateToRestaurant(id) {
     this.router.navigate([`restaurants/details/`], { queryParams: { id: id } });
   }
+  navigateToModifyRestaurant(id) {
+    this.router.navigate([`restaurants/modify/`], { queryParams: { id: id } });
+  }
+
+
 
   filter() {
     const typeCuisine = this.selectedCuisineType.toLowerCase();
@@ -136,12 +145,14 @@ export class ListeRestaurantsComponent implements OnInit {
     })*/
   }
   restaurantSearch() {
+    this.isLoading=true;
     console.log(this.restaurantName);
     this.restaurantslist = this.restaurantName
       ? this.search(this.restaurantName)
       : this.fullRestaurantList;
     this.restaurantsLength = this.restaurantslist.length;
     this.pageSlice = this.restaurantslist.slice(0, this.pageSize);
+    this.isLoading=false
 
   }
   reset() {
@@ -159,6 +170,36 @@ export class ListeRestaurantsComponent implements OnInit {
     this.selectedExigenceAlimentaire = '';
     this.selectedNote = '-1';
 
+  }
+  roleFunction = (dialogRef: MatDialogRef<any>) => {
+    this.restaurantService.deleteRestaurant(this.restaurantToDeleteId).subscribe((res: any) => {
+      dialogRef.close();
+    },
+    error=> dialogRef.close());
+  }
+  openDialog(restaurantId: string) {
+    this.restaurantToDeleteId = restaurantId;
+    const dialogRef = this.dialog.open(ModalComponent, {
+      data: {
+        text: 'Voulez vous supprimer ce Restaurant?',
+        roleFunction: this.roleFunction,
+        buttonText: 'Supprimer'
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.isLoading = true;
+      this.restaurantList$.subscribe((res: any) => {
+        this.typeCuisineList$ = this.typeCuisineService.getAllTypesOfCuisine();
+        this.exigenceAlimentaireList$ = this.exigenceAlimentaireService.getAllExigenceAlimentaire();
+        this.restaurantslist = res;
+        this.fullRestaurantList = res;
+        this.pageSlice = this.restaurantslist.slice(0, this.pageSize);
+        this.restaurantsLength = res.length;
+        this.isLoading = false;
+      });
+
+    });
   }
 
 }

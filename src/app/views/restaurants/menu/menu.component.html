@@ -1,0 +1,64 @@
+<div class="card" *ngIf="!isLoading">
+  <div class="card-header ">
+    <div class="row">
+      <div class="col-sm-6 col-12">
+        Liste des Restaurants
+      </div>
+      <div class="col-sm-6 col-12">
+        <div class="row">
+          <div class="col-12">
+            <input   [(ngModel)]="restaurantName"  [ngModelOptions]="{standalone: true}" (change)="restaurantSearch()"  type="text"  id="text-input" name="text-input" class="form-control " placeholder="Tapez le nom du restaurant">
+
+          </div>
+
+          <!--<div class="col-3">
+            <button type="button" class="btn btn-block btn-primary" (click)="restaurantSearch()">Chercher</button>
+          </div>-->
+        </div>
+      </div>
+    </div>
+    <br>
+
+  </div>
+  <div class="card-body ">
+    <table class="table table-bordered "  style="width:100%;">
+
+
+      <tr>
+        <th>Nom</th>
+
+
+        <th>Actions</th>
+      </tr>
+
+
+      <tr *ngFor="let item of pageSlice   ">
+        <td>{{item.Nom}}</td>
+
+
+        <td>
+          <div class="row pl-2 ">
+            <i (click)="navigateToRestaurant(item.idRestaurant)" class="fa fa-pencil mr-2" aria-hidden="true"></i>
+            <i *ngIf="item.menu!='0'" (click)="navigateToRestaurantView(item.idRestaurant)" class="fa fa-eye mr-2" aria-hidden="true"></i>
+            <i  *ngIf="item.menu==='0'"  (click)="navigateToRestaurantUpdate(item.idRestaurant)" class="fa  fa-plus-circle mr-2" aria-hidden="true"></i>
+
+
+          </div>
+        </td>
+      </tr>
+
+    </table>
+
+    <mat-paginator
+
+      [length]="restaurantsLength"
+      [pageSizeOptions]="[5, 10, 100]"
+      [pageSize]="this.pageSize"
+      (page)="onPageChange($event)"
+
+    >
+    </mat-paginator>
+  </div>
+</div>
+<div *ngIf="isLoading" class="row justify-content-center"><app-spinner></app-spinner></div>
+

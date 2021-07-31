@@ -1,0 +1,52 @@
+<div class="card" *ngIf="!isLoading">
+  <div class="card-header ">
+    <div class="row">
+      <div class="col-sm-9 col-12">
+        Liste des Exigences Alimentaires
+      </div>
+      <div class="col-sm-3 col-12">
+        <button type="button" class="btn btn-block btn-primary" (click)="ajouter()">Ajouter</button>
+
+      </div>
+    </div>
+    <br>
+
+  </div>
+  <div class="card-body ">
+    <table class="table table-bordered  "  style="width:100%;">
+
+
+      <tr>
+        <th>Nom</th>
+
+        <th>Actions</th>
+      </tr>
+
+
+      <tr *ngFor="let item of pageSlice   ">
+        <td>{{item.Libelle}}</td>
+        <td>
+          <div class="row pl-2 ">
+            <i (click)="navigateToRestaurant(item.idExigenceAlimentaire, item.Libelle)" class="fa fa-pencil mr-2" aria-hidden="true"></i>
+            <i class="fa fa-trash" aria-hidden="true" (click)="openDialog(item.idExigenceAlimentaire)"></i>
+
+          </div>
+        </td>
+      </tr>
+
+    </table>
+
+
+    <mat-paginator
+
+      [length]="restaurantsLength"
+      [pageSizeOptions]="[5, 10, 100]"
+      [pageSize]="this.pageSize"
+      (page)="onPageChange($event)"
+
+    >
+    </mat-paginator>
+  </div>
+</div>
+<div *ngIf="isLoading" class="row justify-content-center"><app-spinner></app-spinner></div>
+

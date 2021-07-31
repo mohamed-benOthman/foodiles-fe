@@ -12,8 +12,11 @@ import {NotificationService} from '../../../services/notification.service';
 export class SendNotificationComponent implements OnInit {
   public isLoading = true;
   public restaurantList$: Observable<any>;
+  public extra = 0;
   title: string = '';
   body: string = '';
+  public topics  = '';
+  public url = '';
   success = false;
   failed = false;
   restaurant: string = '';
@@ -22,20 +25,22 @@ export class SendNotificationComponent implements OnInit {
 
   ngOnInit(): void {
     this.restaurantList$ = this.restaurantService.getAllRestaurants();
-    this.isLoading= false;
+    this.isLoading = false;
 
   }
 
   checkDisabled() {
-    if (this.title === '' || this.body === '' || this.restaurant === '') {
+    if (this.title === '' || this.body === '' || this.topics === '' ) {
       return true;
     } else { return false; }
   }
-
+   testExtra(){
+    console.log(this.extra);
+   }
   sendNotification() {
     this.success = false;
     this.failed = false;
-    this.notificationService.sendNotification(this.title, this.body, this.restaurant).subscribe((res: any) => {
+    this.notificationService.sendNotification(this.title, this.body, this.restaurant, this.url, this.topics).subscribe((res: any) => {
       this.success = true;
     },
      error => {

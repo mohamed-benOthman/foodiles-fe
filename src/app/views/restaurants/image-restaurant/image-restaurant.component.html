@@ -6,11 +6,9 @@
       </div>
       <div class="col-sm-6 col-12" >
         <div class="col-10">
-          <input class="form-control "   type="file" name="file" (change)="uploadFile($event)">
+          <input class="btn btn-block btn-primary"  type="file" name="file" (change)="uploadFile($event)">
         </div>
-        <div class="col-2 mt-2" style="flex-direction: column" style="padding:0px !important">
-          <span  class="w-100 pl-4">{{this.uploadPourcentage}}%</span>
-        </div>
+
       </div>
     </div>
     <br>
@@ -26,18 +24,6 @@
     </div>
 
 
-
-<!--        <div class="card">
-
-          <div class="card-body">
-            <carousel [interval]="false">
-              <slide  *ngFor="let type of restaurantDetails.photos">
-                <img   [src]="type.content" alt="First slide" style="display: block; width: 100%; max-height: 300px">
-              </slide>
-
-            </carousel>
-          </div>
-        </div>-->
     </div>
   </div>
 </div>

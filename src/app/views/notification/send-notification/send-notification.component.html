@@ -14,6 +14,20 @@
         <textarea id="textarea-input" name="textarea-input" [(ngModel)]="body" rows="9" class="form-control" placeholder="Contenu..."></textarea>
       </div>
       <div class="form-group">
+        <label class="col-sm-4 col-form-label" >Extra</label>
+        <div class="col-12">
+          <select id="extra" [(ngModel)]="extra" (change)="testExtra()" name="extra" class="form-control">
+            <option value="0">Pas d'extra</option>
+            <option value="1">Nom du Restaurant</option>
+            <option value="2">Url du Restaurant</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group" *ngIf="extra==2" >
+        <label>Url </label>
+        <input type="text" class="form-control" name="textarea-input" [(ngModel)]="url" rows="9" class="form-control" placeholder="Contenu..." >
+      </div>
+      <div class="form-group" *ngIf="extra==1">
         <label class="col-sm-4 col-form-label" >Restaurant</label>
         <div class="col-12">
           <select id="typeCuisine" [(ngModel)]="restaurant" name="restaurant" class="form-control">
@@ -21,6 +35,10 @@
             <option *ngFor="let type of restaurantList$ | async" [value]="type.idRestaurant">{{type.Nom}}</option>
           </select>
         </div>
+      </div>
+      <div class="form-group">
+        <label for="company">Groupe</label>
+        <input type="text" class="form-control" id="company" [(ngModel)]="topics" placeholder="Entrer le groupe">
       </div>
       <div class="row justify-content-center">
         <div class="w-50">

@@ -34,4 +34,22 @@ export class RestaurantsService {
     return this.httpClient.post(this.endpoint + 'deleteCommentaire', data);
   }
 
+  deleteRestaurant(restaurantId ): Observable<any> {
+
+    return this.httpClient.delete(this.endpoint + restaurantId);
+  }
+
+  modifyRestaurant(data ): Observable<any> {
+
+    return this.httpClient.post(this.endpoint + 'modifyRestaurant', data);  }
+
+
+  modifyMenu(id, menut ): Observable<any> {
+    const menuData = JSON.stringify(menut)
+     const data ={
+       idRestaurant: id,
+       menu: menuData
+     }
+    return this.httpClient.post(this.endpoint + 'modifyMenu', data);  }
+
 }

@@ -21,6 +21,10 @@ export class CommentaireService {
     return this.httpClient.get(this.endpoint + idCommentaire);
   }
 
+  getAll() {
+    return this.httpClient.get(this.endpoint );
+  }
+
   modifyCommentaireById(id: string, title: string, comment: string) {
     const data = {
       id,

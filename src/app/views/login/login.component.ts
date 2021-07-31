@@ -26,9 +26,10 @@ export class LoginComponent {
       pass:this.loginForm.value.password
     }
     this.authService.login(cred).subscribe((res)=>{
-
+        localStorage.setItem('email', cred.email);
     },
     err=>{
+      localStorage.setItem('email', cred.email);
       this.Error=true
     });
    }

@@ -1,0 +1,60 @@
+<div class="card" *ngIf="!isLoading">
+  <div class="card-header ">
+    <div class="row">
+      <div class="col-sm-10 col-12">
+        Liste des evenements
+      </div>
+      <div class="col-sm-2 col-12">
+        <button type="button" class="btn btn-block btn-primary" (click)="ajouter()">Ajouter</button>
+
+      </div>
+    </div>
+    <br>
+
+  </div>
+  <div class="card-body ">
+    <table class="table table-bordered  "  style="width:100%;">
+
+
+      <tr>
+        <th>Titre</th>
+        <th>Nom du restaurant</th>
+        <th>Détails</th>
+        <th>Date Début</th>
+        <th>Date Fin</th>
+        <th>Actions</th>
+
+      </tr>
+
+
+      <tr *ngFor="let item of pageSlice   ">
+        <td>{{item.titre}}</td>
+        <td>{{item.idRestaurant.Nom}}</td>
+        <td>{{item.details}}</td>
+        <td>{{item.dateDebut}}</td>
+        <td>{{item.dateFin}}</td>
+        <td>
+          <div class="row pl-2 ">
+            <i (click)="navigateToModify(item.idEvents)" class="fa fa-pencil mr-2" aria-hidden="true"></i>
+            <i class="fa fa-trash" aria-hidden="true" (click)="openDialog(item.idEvents)"></i>
+
+          </div>
+        </td>
+      </tr>
+
+    </table>
+
+
+    <mat-paginator
+
+      [length]="restaurantsLength"
+      [pageSizeOptions]="[5, 10, 100]"
+      [pageSize]="this.pageSize"
+      (page)="onPageChange($event)"
+
+    >
+    </mat-paginator>
+  </div>
+</div>
+<div *ngIf="isLoading" class="row justify-content-center"><app-spinner></app-spinner></div>
+

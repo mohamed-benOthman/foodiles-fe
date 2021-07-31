@@ -1,0 +1,225 @@
+<div *ngIf="!isLoading" class="row justify-content-center">
+  <div class="card w-100">
+    <div class="card-header">
+      <div class="row">
+        <div class="col-sm-9  col-12  mb-sm-0 mb-2">
+      <strong>{{restaurantDetails.Nom }}</strong>
+        </div>
+      <div class="col-sm-3 col-12">
+        <button type="button" class="btn btn-block btn-primary" (click)="visualiser()">Visualiser</button>
+      </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="form-group ">
+        <div class="row">
+          <div class="col-sm-6 col-12 mb-sm-0 mb-2">
+            <label for="company">Nom</label>
+          </div>
+          <div class="col-sm-6 col-12 mb-sm-0 ">
+            <input type="text" class="form-control" id="company" [(ngModel)]="restaurantDetails.Nom" placeholder="Nom">
+          </div>
+
+        </div>
+      </div>
+      <div class="form-group ">
+        <div class="row">
+          <div class="col-sm-6 col-12 mb-sm-0 mb-2">
+            <label for="company">Adresse</label>
+          </div>
+          <div class="col-sm-6 col-12 mb-sm-0 ">
+            <input type="text" class="form-control" id="company" [(ngModel)]="restaurantDetails.Adresse" placeholder="Adresse">
+          </div>
+
+        </div>
+      </div>
+      <div class="form-group ">
+        <div class="row">
+          <div class="col-sm-6 col-12 mb-sm-0 mb-2">
+            <label for="company">Code Postal</label>
+          </div>
+          <div class="col-sm-6 col-12 mb-sm-0 ">
+            <input type="text" class="form-control" id="company" [(ngModel)]="restaurantDetails.CodePostal" placeholder="Code Postal">
+          </div>
+
+        </div>
+      </div>
+      <div class="form-group ">
+        <div class="row">
+          <div class="col-sm-6 col-12 mb-sm-0 mb-2">
+            <label for="company">Note</label>
+          </div>
+          <div class="col-sm-6 col-12 mb-sm-0 ">
+            <input type="text" class="form-control" id="company" [(ngModel)]="restaurantDetails.Note" placeholder="Note">
+          </div>
+
+        </div>
+      </div>
+      <div class="form-group ">
+        <div class="row">
+          <div class="col-sm-6 col-12 mb-sm-0 mb-2">
+            <label for="company">Description</label>
+          </div>
+          <div class="col-sm-6 col-12 mb-sm-0 ">
+            <textarea rows="9" type="text" class="form-control" id="company" [(ngModel)]="restaurantDetails.Description" placeholder="Description" ></textarea>
+          </div>
+
+        </div>
+      </div>
+      <div class="form-group ">
+      <div class="row">
+        <div class="col-sm-6 col-12 mb-sm-0 mb-2">
+          <label for="company">Telephone1</label>
+        </div>
+        <div class="col-sm-6 col-12 mb-sm-0 ">
+          <input type="text" class="form-control" id="company" [(ngModel)]="restaurantDetails.Telephone" placeholder="tel1">
+        </div>
+
+      </div>
+      </div>
+      <div class="form-group ">
+
+      <div class="row">
+        <div class="col-sm-6 col-12 mb-sm-0 mb-2">
+          <label for="company">Telephone2</label>
+        </div>
+        <div class="col-sm-6 col-12 mb-sm-0 ">
+          <input type="text" class="form-control" id="company" [(ngModel)]="restaurantDetails.Telephone2" placeholder="tel2">
+        </div>
+
+      </div>
+      </div>
+      <div class="form-group ">
+
+        <div class="row">
+          <div class="col-sm-6 col-12 mb-sm-0 mb-2">
+            <label for="company">Fax</label>
+          </div>
+          <div class="col-sm-6 col-12 mb-sm-0 ">
+            <input type="text" class="form-control" id="company" [(ngModel)]="restaurantDetails.Fax" placeholder="Fax">
+          </div>
+
+        </div>
+      </div>
+      <div class="form-group ">
+
+        <div class="row">
+          <div class="col-sm-6 col-12 mb-sm-0 mb-2">
+            <label for="company">Horaire</label>
+          </div>
+          <div class="col-sm-6 col-12 mb-sm-0 ">
+            <input type="text" class="form-control" id="company" [(ngModel)]="restaurantDetails.Horaire" placeholder="Horaire">
+          </div>
+
+        </div>
+      </div>
+      <div class="form-group ">
+
+        <div class="row">
+          <div class="col-sm-6 col-12 mb-sm-0 mb-2">
+            <label for="company">Mail</label>
+          </div>
+          <div class="col-sm-6 col-12 mb-sm-0 ">
+            <input type="text" class="form-control" id="company" [(ngModel)]="restaurantDetails.Mail" placeholder="Mail">
+          </div>
+
+        </div>
+      </div>
+      <div class="form-group ">
+
+        <div class="row">
+          <div class="col-sm-6 col-12 mb-sm-0 mb-2">
+            <label for="company">Site</label>
+          </div>
+          <div class="col-sm-6 col-12 mb-sm-0 ">
+            <input type="text" class="form-control" id="company" [(ngModel)]="restaurantDetails.Site" placeholder="Site">
+          </div>
+
+        </div>
+      </div>
+      <div class="row" >
+        <div class="col-sm-6 col-12 mb-sm-0 mb-2">
+          <label for="company">Typed de Cuisine</label>
+        </div>
+        <div class="col-sm-6 col-12 mb-sm-0 " style="max-height: 200px; overflow-y: auto">
+          <div class="row">
+            <div class="col-sm-6 col-12 mb-sm-0 mb-2" *ngFor="let item of typeCuisineList$ | async">
+              <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input"
+                       (click)="selectTypeCuisine(item)"
+                       [value]="item.idType"
+                       [id]="checkBoxId+item.idType"
+                       [checked]="checked(item.idType,1)"  >
+                <label class="custom-control-label"  [for]="checkBoxId+item.idType">{{item.Libelle}}</label>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+
+      </div>
+      <div class="row mt-4" >
+        <div class="col-sm-6 col-12 mb-sm-0 mb-2">
+          <label for="company">Exigences Alimentaires</label>
+        </div>
+        <div class="col-sm-6 col-12 mb-sm-0 " style="max-height: 200px; overflow-y: auto">
+          <div class="row">
+            <div class="col-sm-6 col-12 mb-sm-0 mb-2" *ngFor="let item of exigenceAlimentaireList$ | async">
+              <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input"
+                       (click)="selectExigence(item)"
+                       [value]="item.idExigenceAlimentaire"
+                       [id]="checkBoxId2+item.idExigenceAlimentaire"
+                       [checked]="checked(item.idExigenceAlimentaire,2)" >
+                <label class="custom-control-label"  [for]="checkBoxId2+item.idExigenceAlimentaire">{{item.Libelle}}</label>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+
+      </div>
+
+ <!--     <div class="row mt-4" >
+        <div class="col-sm-6 col-12 mb-sm-0 mb-2">
+          <label for="company">Les ambiances</label>
+        </div>
+        <div class="col-sm-6 col-12 mb-sm-0 " style="max-height: 200px; overflow-y: auto">
+          <div class="row">
+            <div class="col-sm-6 col-12 mb-sm-0 mb-2" *ngFor="let item of ambiancesList$ | async">
+              <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input"
+                       (click)="selectAmbiance(item)"
+                       [value]="item.idCadreAmbiance"
+                       [id]="checkBoxId2+item.idCadreAmbiance"
+                       [checked]="checked(item.idCadreAmbiance,3)" >
+                <label class="custom-control-label"  [for]="checkBoxId2+item.idCadreAmbiance">{{item.libelle}}</label>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+
+      </div>
+-->
+
+    </div>
+
+    <div class="row  justify-content-center mb-4  mt-4" >
+
+        <button type="button" class="btn btn-block btn-primary w-25 mr-2" (click)="navigateBack()">Retourner</button>
+
+
+        <button type="button" class="btn btn-block btn-primary w-25 ml-2"  (click)="modifyRestaurant()">Modifier</button>
+
+    </div>
+    <div class="row justify-content-center w-100">
+         <h6 *ngIf="this.success===true" style="color:green;">Ce restaurant est modifiee avec succees</h6>
+
+    </div>
+  </div>
+</div>
+<div *ngIf="isLoading" class="row justify-content-center"><app-spinner></app-spinner></div>

@@ -33,9 +33,15 @@ export class ImageService {
       oReq.send(null);
       return resultObservable;
   }
-  public uploadImage(file: File): Observable<any> {
+  public uploadImage(file: File, idResto): Observable<any> {
     const formData = new FormData();
-    formData.append('file', file);
+    formData.append('avatar1', file);
+    formData.append('name', "fksdlfksf");
+    formData.append('typePhoto', '1');
+    formData.append('idResto', idResto);
+    formData.append('rang','1');
+    formData.append('ordre', '1');
+    formData.append('emailUser', localStorage.getItem('email'));
 
     const header = new HttpHeaders();
     const params = new HttpParams();
@@ -45,10 +51,53 @@ export class ImageService {
       reportProgress: true,
       headers: header
     };
-    const req = new HttpRequest('POST', environment.apiUrl + 'photo/upload', formData, options);
+    const req = new HttpRequest('POST', environment.imageLocation + 'photo/upload', formData, options);
+    return this.httpClient.request(req);
+  }
+  public uploadImageGeneral(file: File): Observable<any> {
+    const formData = new FormData();
+    formData.append('avatar1', file);
+
+    const header = new HttpHeaders();
+    const params = new HttpParams();
+
+    const options = {
+      params,
+      reportProgress: true,
+      headers: header
+    };
+    const req = new HttpRequest('POST', environment.imageGeneralUpload + 'photo/upload-general', formData, options);
     return this.httpClient.request(req);
   }
   convertImage(path: string): string {
     return environment.imageLocation + path;
+  }
+
+  getAll(){
+    return this.httpClient.get(environment.imageLocation+'photo/')
+  }
+
+  getImageSrcGeneral(filePath): Observable<string> {
+    const messageSource = new BehaviorSubject('');
+    const resultObservable = messageSource.asObservable();
+    const  oReq = new XMLHttpRequest();
+    oReq.open('GET', `${environment.imageGeneralPosition + filePath}`, true);
+    oReq.responseType = 'arraybuffer';
+
+    oReq.onload = function (oEvent) {
+      const arrayBuffer = oReq.response; // Note: not oReq.responseText
+      if (arrayBuffer) {
+        const binaryString = '';
+        const base64String = btoa(
+          new Uint8Array(arrayBuffer)
+            .reduce((data, byte) => data + String.fromCharCode(byte), '')
+        );
+
+        messageSource.next('data:image/png;base64, ' + base64String);
+      }
+    };
+
+    oReq.send(null);
+    return resultObservable;
   }
 }

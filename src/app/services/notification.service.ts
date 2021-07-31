@@ -9,13 +9,13 @@ export class NotificationService {
 
   constructor(private httpClient: HttpClient) { }
 
-  sendNotification(title: string, body: string, idRestaurant: string) {
+  sendNotification(title: string, body: string, idRestaurant: string, url: string, topics: string) {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${environment.firebaseKey}`
     });
     const bodyData = {
-      to : '/topics/' + environment.topics,
+      to : '/topics/' + topics,
       mutable_content : true,
       content_available: true,
       priority: 'high',
@@ -26,7 +26,8 @@ export class NotificationService {
           body: body,
           notificationLayout: 'BigText',
           payload: {
-            idResto: idRestaurant
+            idResto: idRestaurant,
+            url : url
           }
         }
       }

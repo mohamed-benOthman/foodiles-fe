@@ -1,12 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { getStyle, hexToRgba } from '@coreui/coreui/dist/js/coreui-utilities';
 import { CustomTooltips } from '@coreui/coreui-plugin-chartjs-custom-tooltips';
+import {RestaurantsService} from '../../services/restaurants.service';
+import {AuthService} from '../../services/auth.service';
+import {CommentaireService} from '../../services/commentaire.service';
+import {Observable} from 'rxjs';
+import {ImageService} from '../../services/image.service';
 
 @Component({
-  templateUrl: 'dashboard.component.html'
+  templateUrl: 'dashboard.component.html',
+  styleUrls:  ['./../../components/spinner/spinner.component.scss']
 })
 export class DashboardComponent implements OnInit {
+  constructor( private restaurantService: RestaurantsService,
+               private authService: AuthService,
+               private commentaireService: CommentaireService,
+               private imageService: ImageService) {
+  }
 
+  public restaurants;
   radioModel: string = 'Month';
 
   // lineChart1
@@ -372,9 +384,28 @@ export class DashboardComponent implements OnInit {
   ];
   public brandBoxChartLegend = false;
   public brandBoxChartType = 'line';
-
+  public usersLenght = 0;
+  public isLoading = true;
+  public utilisateursSansCommentaires = 0;
+  public utilisateursAvecCommentaires = 0;
+  public commentaires$: Observable<any>;
+  public commentairesNb = 0;
+  public imageNb: any;
+  // pie1
+  public pieChartLabels: string[] = [ 'Utilisateurs avec commentaires', 'Utilisateurs sans commentairess'];
+  public pieChartData: number[] = [ this.utilisateursAvecCommentaires, this.utilisateursSansCommentaires];
+  public pieChartLabelsPhotos: string[] = [ 'Utilisateurs qui ont fait des photos', 'Utilisateurs sans photos'];
+  public pieChartDataPhotos: number[] = [ this.utilisateursAvecCommentaires, this.utilisateursSansCommentaires];
+  public pieChartType = 'pie';
   public random(min: number, max: number) {
     return Math.floor(Math.random() * (max - min + 1) + min);
+  }
+  public chartClicked(e: any): void {
+    console.log(e);
+  }
+
+  public chartHovered(e: any): void {
+    console.log(e);
   }
 
   ngOnInit(): void {
@@ -384,5 +415,33 @@ export class DashboardComponent implements OnInit {
       this.mainChartData2.push(this.random(80, 100));
       this.mainChartData3.push(65);
     }
+    this.commentaires$ = this.commentaireService.getAll();
+    this.restaurantService.getAllRestaurants().subscribe((res) => {
+
+      this.restaurants = res;
+      this.authService.getUsers().subscribe((res: any) => {
+         this.usersLenght = res.length;
+         const users = res;
+         const sans = users.filter((item) => item.commentaires.length === 0);
+         this.utilisateursSansCommentaires = sans.length;
+        const avec = users.filter((item) => item.commentaires.length > 0);
+        this.utilisateursAvecCommentaires = avec.length;
+        const  resultPie1 = [this.utilisateursAvecCommentaires, this.utilisateursSansCommentaires];
+        const sansPhotos = users.filter((item) => item.photos.length === 0);
+        const avecPhotos = users.filter((item) => item.photos.length > 0);
+        console.log(sansPhotos.length);
+        console.log(sansPhotos.length);
+        this.pieChartDataPhotos = [avecPhotos.length, sansPhotos.length];
+         this.pieChartData = resultPie1;
+         this.isLoading = false;
+      });
+
+    });
+    this.imageService.getAll().subscribe((res: any) => {
+      this.imageNb = res.length;
+    });
+    this.commentaires$.subscribe((res: any) => {
+      this.commentairesNb = res.length;
+    });
   }
 }

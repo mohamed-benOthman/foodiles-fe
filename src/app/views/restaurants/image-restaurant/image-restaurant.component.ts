@@ -3,7 +3,7 @@ import {DomSanitizer} from '@angular/platform-browser';
 import {ImageService} from '../../../services/image.service';
 import {ActivatedRoute} from '@angular/router';
 import {RestaurantsService} from '../../../services/restaurants.service';
-import {filter} from 'rxjs/operators';
+import {filter, last} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 import {ModalComponent} from '../../../components/modal/modal.component';
@@ -29,7 +29,7 @@ export class ImageRestaurantComponent implements OnInit {
   isLoading = true;
   photoIdSelected: string;
   public  uploadPourcentage = 0;
-
+  public restoId ;
 
   ngOnInit(): void {
     this.activatedRoute.queryParams.pipe(
@@ -38,6 +38,7 @@ export class ImageRestaurantComponent implements OnInit {
     ).subscribe(params => {
 
         console.log(params.id);
+        this.restoId=params.id;
         this.restaurantDetails$  = this.restaurantService.getRestaurantById(params.id);
         this.restaurantDetails$.subscribe(async (res) => {
           this.restaurantDetails = res;
@@ -99,12 +100,22 @@ export class ImageRestaurantComponent implements OnInit {
     console.log(event.total);
     /*console.log((event.loaded / event.total) * 100);*/
 
-    this.imageService.uploadImage((event.target as HTMLInputElement).files[0]).subscribe((res: any) => {
+    this.imageService.uploadImage((event.target as HTMLInputElement).files[0],this.restoId ).pipe(last()).subscribe((res: any) => {
+      this.isLoading=true;
         if (res.type === HttpEventType.UploadProgress) {
           this.uploadPourcentage = Math.round(res.loaded / res.total * 100);
-        } else { console.log(res); }
+        } else {
+          this.restaurantDetails$  = this.restaurantService.getRestaurantById(this.restoId);
+          this.restaurantDetails$.subscribe(async (res) => {
+            this.restaurantDetails = res;
+            this.getImage();
+            this.isLoading = false;
+            window.alert("L'image est ajouté avec succées")
+          });
+        }
       },
       error => {
+      this.isLoading=false;
        console.log(error);
         this.uploadPourcentage = 0;
       }     );                                                                                                                                                 ``;

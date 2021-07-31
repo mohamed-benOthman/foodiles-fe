@@ -1,5 +1,5 @@
 import {Component, OnInit, SecurityContext} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {filter} from 'rxjs/operators';
 import {RestaurantsService} from '../../../services/restaurants.service';
 import {Observable, Subscription} from 'rxjs';
@@ -15,10 +15,16 @@ export class RestaurantDetailComponent implements OnInit {
   public restaurantDetails$: Observable<any>;
   public restaurantDetails: any;
   imageUrl$: Observable<string>;
-  imageUrl :any;
+  imageUrl: any;
   isLoading = true;
+  public restoId : Number;
 
-  constructor(private sanitizer: DomSanitizer, private  imageService: ImageService, private activatedRoute: ActivatedRoute, private restaurantService: RestaurantsService) {
+  constructor(private sanitizer: DomSanitizer,
+              private  imageService: ImageService,
+              private activatedRoute: ActivatedRoute,
+              private restaurantService: RestaurantsService,
+              private router:Router
+              ) {
 
     for (let i = 0; i < 4; i++) {
       this.addSlide();
@@ -59,6 +65,7 @@ export class RestaurantDetailComponent implements OnInit {
     ).subscribe(params => {
 
       console.log(params.id);
+        this.restoId = params.id;
         this.restaurantDetails$  = this.restaurantService.getRestaurantById(params.id);
         this.restaurantDetails$.subscribe(async (res) => {
           this.restaurantDetails = res;
@@ -69,23 +76,26 @@ export class RestaurantDetailComponent implements OnInit {
     );
   }
 
-  getImage(): any{
-    for (let image of this.restaurantDetails.photos){
+  getImage(): any {
+    for (const image of this.restaurantDetails.photos) {
       this.imageService.getImageSrc(image.content).subscribe(
         (res: any) => {
-          image.content=this.sanitizer.bypassSecurityTrustUrl(res);
+          image.content = this.sanitizer.bypassSecurityTrustUrl(res);
         }
       );
     }
-    for (let image of this.restaurantDetails.bonPlans){
+    for (const image of this.restaurantDetails.bonPlans) {
       this.imageService.getImageSrc(image.path).subscribe(
         (res: any) => {
-          image.path=this.sanitizer.bypassSecurityTrustUrl(res);
+          image.path = this.sanitizer.bypassSecurityTrustUrl(res);
         }
       );
     }
 
 
+  }
+  toModify() {
+    this.router.navigate([`restaurants/modify/`], { queryParams: { id: this.restoId } });
   }
 
 }

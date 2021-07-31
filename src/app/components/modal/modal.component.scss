@@ -1,0 +1,16 @@
+.btn-primary:hover {
+  color: #fff;
+ background-color: #dc0934 !important;
+  border-color: #dc0934 !important;
+}
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
+  color: #fff;
+  background-color: #dc0934 !important;
+  border-color: #dc0934 !important;
+}
+
+button{
+  color: #fff;
+  background-color: #dc0934 !important;
+  border-color: #dc0934 !important;
+}

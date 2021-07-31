@@ -1,15 +1,12 @@
 import { INavData } from '@coreui/angular';
 
 export const navItems: INavData[] = [
- /* {
+  {
     name: 'Dashboard',
     url: '/dashboard',
     icon: 'icon-speedometer',
-    badge: {
-      variant: 'info',
-      text: 'NEW'
-    }
-  },*/
+
+  },
   {
     title: true,
     name: 'Les Restaurants'
@@ -30,6 +27,31 @@ export const navItems: INavData[] = [
     icon: 'cil-chat-bubble'
   },
   {
+    name: 'Les Exigences ',
+    url: '/restaurants/exigences-alimentaires',
+    icon: 'cil-apple'
+  },
+  {
+    name: 'Moyens de paiement ',
+    url: '/restaurants/paiement',
+    icon: 'cil-bank'
+  },
+  {
+    name: 'Guides Michelin ',
+    url: '/restaurants/michelin',
+    icon: 'cil-apple'
+  },
+  {
+    name: 'Les menus ',
+    url: '/restaurants/menu',
+    icon: 'cil-burger'
+  },
+  {
+    name: 'Evenements',
+    url: '/restaurants/evenement-list',
+    icon: 'cil-running'
+  },
+  {
     title: true,
     name: 'Les Notifications'
   },
@@ -38,7 +60,7 @@ export const navItems: INavData[] = [
     url: '/notification/envoyer-notification',
     icon: 'cil-bell'
   },
- /* {
+/*  {
     title: true,
     name: 'Theme'
   },
@@ -46,8 +68,7 @@ export const navItems: INavData[] = [
     name: 'Colors',
     url: '/theme/colors',
     icon: 'icon-drop'
-  },*/
-  /*
+  },
   {
     name: 'Typography',
     url: '/theme/typography',
