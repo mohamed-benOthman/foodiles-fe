@@ -29,7 +29,7 @@ export class CommentairesComponent implements OnInit {
   public selectedExigenceAlimentaire = '';
   public exigenceAlimentaireList$: Observable<ExigenceAlimentaire>;
   selectedNote="-1";
-  pageSize = 5;
+  pageSize = 10;
   isLoading = true;
   restaurantName: string;
   fullRestaurantList: any = [];

@@ -1,17 +1,17 @@
 <div class="card" *ngIf="!isLoading">
   <div class="card-header ">
     <div class="row">
-      <div class="col-sm-6 col-12">
+      <div class="col-xl-6 col-12">
         Liste des Restaurants
       </div>
-      <div class="col-sm-6 mt-sm-0 mt-2 col-12">
+      <div class="col-xl-6 mt-sm-0 mt-2 col-12">
         <div class="row">
           <div class="col-12">
             <input   [(ngModel)]="restaurantName"  [ngModelOptions]="{standalone: true}" type="text"  id="text-input" (change)="restaurantSearch()"  name="text-input" class="form-control " placeholder="Tapez le nom du restaurant">
 
           </div>
 
-          <!--<div class="col-sm-3 col-12">
+          <!--<div class="col-xl-3 col-12">
             <button type="button" class="btn btn-block btn-primary" (click)="restaurantSearch()">Chercher</button>
           </div>-->
         </div>
@@ -38,7 +38,7 @@
 
         <td>
           <div class="row pl-2 ">
-            <i (click)="navigateToRestaurant(item.idRestaurant)" class="fa fa-pencil mr-2" aria-hidden="true"></i>
+            <i (click)="navigateToRestaurant(item.idRestaurant)" class="fa fa-pencil mr-4" aria-hidden="true"></i>
           </div>
         </td>
       </tr>

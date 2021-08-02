@@ -1,19 +1,43 @@
 <div class="card" *ngIf="!isLoading">
   <div class="card-header ">
     <div class="row">
-      <div class=" col-12 ">
+      <div class="col-xl-9  col-12 ">
         Consultation des éléments de sous menu
       </div>
-
+      <div class="col-xl-3  col-12 ">
+      <button type="button" class="btn btn-block btn-primary" (click)="goBack()">Retourner</button>
+      </div>
 
     </div>
     <br>
 
   </div>
   <div class="card-body ">
-    <div class="row w-100 justify-content-center">
-    <div class="w-25" style="overflow-x: auto">
+    <div class="row  w-100 justify-content-center">
+    <div class="bigContainer">
+
+      <div class="row justify-content-center w-100">
+      <h1>Menu</h1>
+      </div>
+      <div *ngFor="let item of data.Menu" class="mb-3">
+      <div class="row w-100" style="margin-bottom: -5px">
+        <h2>{{item.name}}</h2>
+      </div>
+        <div *ngFor="let item2 of item['Menu-items']">
+      <div class="row justify-content-between pr-2 pl-2">
+        <h5 class="name">{{item2.name}}</h5>
+        <h5>{{item2.price}}</h5>
+      </div>
+      <div class=" w-100 mr-2 ml-2" >
+
+        <h5>{{item2.cuisine_name}}</h5>
+        <h5>{{item2.category_name}}</h5>
+      </div>
+        </div>
+      </div>
+<!--
       <ngx-json-viewer *ngIf="data" [json]="data"></ngx-json-viewer>
+-->
       <h5 *ngIf="!data"  >Pas de Menu pour ce restaurant</h5>
 
     </div>

@@ -1,11 +1,11 @@
 <div class="card" *ngIf="!isLoading">
   <div class="card-header ">
     <div class="row">
-      <div class="col-sm-9 col-12">
+      <div class="col-xl-9 col-12">
        <h5>{{restaurantDetails.Nom}}</h5>
       </div>
 
-      <div class="col-sm-3 col-12 mb-sm-0 mb-2">
+      <div class="col-xl-3 col-12 mb-sm-0 mb-2">
         <button type="button" class="btn btn-block btn-primary" (click)="toModify()">Modifier</button>
       </div>
 
@@ -16,108 +16,108 @@
   </div>
   <div class="card-body ">
     <div class="row">
-      <div class="col-sm-6 col-12">
+      <div class="col-xl-6 col-12">
         <h6>Nom du restaurant</h6>
       </div>
-      <div class="col-sm-6 col-12">
+      <div class="col-xl-6 col-12">
         {{restaurantDetails.Nom}}
       </div>
-      <div class="col-sm-6 col-12">
+      <div class="col-xl-6 col-12">
         <h6>Adresse du restaurant</h6>
       </div>
-      <div class="col-sm-6 col-12">
+      <div class="col-xl-6 col-12">
         {{restaurantDetails.Adresse}}
       </div>
-      <div class="col-sm-6 col-12">
+      <div class="col-xl-6 col-12">
         <h6>Code Postale</h6>
       </div>
-      <div class="col-sm-6 col-12">
+      <div class="col-xl-6 col-12">
         {{restaurantDetails.CodePostal}}
       </div>
-      <div class="col-sm-6 col-12">
+      <div class="col-xl-6 col-12">
         <h6>Note</h6>
       </div>
-      <div class="col-sm-6 col-12">
+      <div class="col-xl-6 col-12">
         {{restaurantDetails.Note}}
       </div>
-      <div class="col-sm-6 col-12">
+      <div class="col-xl-6 col-12">
         <h6>Description</h6>
       </div>
-      <div class="col-sm-6 col-12">
+      <div class="col-xl-6 col-12">
         {{restaurantDetails.Description}}
       </div>
-      <div class="col-sm-6 col-12">
+      <div class="col-xl-6 col-12">
         <h6>Telephone1</h6>
       </div>
-      <div class="col-sm-6 col-12">
+      <div class="col-xl-6 col-12">
         {{restaurantDetails.Telephone}}
       </div>
 
-      <div class="col-sm-6 col-12">
+      <div class="col-xl-6 col-12">
         <h6>Telephone2</h6>
       </div>
-      <div class="col-sm-6 col-12">
+      <div class="col-xl-6 col-12">
         {{restaurantDetails.Telephone2}}
       </div>
-      <div class="col-sm-6 col-12">
+      <div class="col-xl-6 col-12">
         <h6>Tranche Prix</h6>
       </div>
-      <div class="col-sm-6 col-12">
+      <div class="col-xl-6 col-12">
         {{restaurantDetails.tranchePrix.libelle}}
       </div>
-      <div class="col-sm-6 col-12">
+      <div class="col-xl-6 col-12">
         <h6>Fax</h6>
       </div>
-      <div class="col-sm-6 col-12">
+      <div class="col-xl-6 col-12">
         {{restaurantDetails.Fax}}
       </div>
-      <div class="col-sm-6 col-12">
+      <div class="col-xl-6 col-12">
         <h6>Horaire</h6>
       </div>
-      <div class="col-sm-6 col-12">
+      <div class="col-xl-6 col-12">
         {{restaurantDetails.Horaire}}
       </div>
-      <div class="col-sm-6 col-12">
+      <div class="col-xl-6 col-12">
         <h6>Mail</h6>
       </div>
-      <div class="col-sm-6 col-12">
+      <div class="col-xl-6 col-12">
         {{restaurantDetails.Mail}}
       </div>
-      <div class="col-sm-6 col-12">
+      <div class="col-xl-6 col-12">
         <h6>Site</h6>
       </div>
-      <div class="col-sm-6 col-12">
+      <div class="col-xl-6 col-12">
         {{restaurantDetails.Site}}
       </div>
 
-      <div class="col-sm-6 col-12">
+      <div class="col-xl-6 col-12">
         <h6>Type de restaurant</h6>
       </div>
-      <div class="col-sm-6 col-12">
+      <div class="col-xl-6 col-12">
         <ul><li *ngFor="let type of restaurantDetails.types ">{{type.Libelle}}</li></ul>
       </div>
-      <div class="col-sm-6 col-12">
+      <div class="col-xl-6 col-12">
         <h6>Ambiance</h6>
       </div>
-      <div class="col-sm-6 col-12">
+      <div class="col-xl-6 col-12">
         <ul><li *ngFor="let type of restaurantDetails.cadreAmbiances ">{{type.libelle}}</li></ul>
       </div>
-      <div class="col-sm-6 col-12">
+      <div class="col-xl-6 col-12">
         <h6>Exigences Alimentaire</h6>
       </div>
-      <div class="col-sm-6 col-12">
+      <div class="col-xl-6 col-12">
         <ul><li *ngFor="let type of restaurantDetails.exigenceAlims ">{{type.Libelle}}</li></ul>
       </div>
-      <div class="col-sm-6 col-12">
+      <div class="col-xl-6 col-12">
         <h6>Moyens Paiements</h6>
       </div>
-      <div class="col-sm-6 col-12">
+      <div class="col-xl-6 col-12">
         <ul><li *ngFor="let type of restaurantDetails.moyenPaiements ">{{type.libelle}}</li></ul>
       </div>
-      <div class="col-sm-6 col-12">
+      <div class="col-xl-6 col-12">
         <h6>Les photos</h6>
       </div>
-      <div class="col-sm-6 col-12">
+      <div class="col-xl-6 col-12">
 
           <div class="card">
 
@@ -131,10 +131,10 @@
             </div>
           </div>
       </div>
-      <div class="col-sm-6 col-12">
+      <div class="col-xl-6 col-12">
         <h6>Les Evenements</h6>
       </div>
-      <div class="col-sm-6 col-12">
+      <div class="col-xl-6 col-12">
 
         <div class="card" *ngFor="let item of restaurantDetails.events">
 
@@ -146,10 +146,10 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-6 col-12">
+      <div class="col-xl-6 col-12">
         <h6>Les Bons Plans</h6>
       </div>
-      <div class="col-sm-6 col-12">
+      <div class="col-xl-6 col-12">
 
         <div class="card" *ngFor="let item of restaurantDetails.bonPlans">
 
@@ -160,10 +160,10 @@
           </div>
         </div>
       </div>
-      <div class="col-sm-6 col-12">
+      <div class="col-xl-6 col-12">
         <h6>Position</h6>
       </div>
-      <div class="col-sm-6 col-12">
+      <div class="col-xl-6 col-12">
         {{restaurantDetails.Site}}
       </div>
 

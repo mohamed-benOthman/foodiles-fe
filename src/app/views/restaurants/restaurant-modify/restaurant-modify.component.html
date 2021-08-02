@@ -2,21 +2,30 @@
   <div class="card w-100">
     <div class="card-header">
       <div class="row">
-        <div class="col-sm-9  col-12  mb-sm-0 mb-2">
+        <div class="col-xl-4  col-12  mb-sm-0 mb-2">
       <strong>{{restaurantDetails.Nom }}</strong>
         </div>
-      <div class="col-sm-3 col-12">
-        <button type="button" class="btn btn-block btn-primary" (click)="visualiser()">Visualiser</button>
+      <div class="col-xl-2 col-12 col-xl-0 mb-2">
+        <button type="button" class="btn btn-block btn-primary" (click)="visualiser('details')">Visualiser</button>
       </div>
+        <div class="col-xl-2 col-xl-0 mb-2">
+          <button type="button" class="btn btn-block btn-primary" (click)="visualiser('image-restaurant')">Images</button>
+        </div>
+        <div class="col-xl-2 col-xl-0 mb-2">
+          <button type="button" class="btn btn-block btn-primary" (click)="visualiser('commentaires-restaurant')">Commentaires</button>
+        </div>
+        <div class="col-xl-2 col-xl-0 mb-2">
+          <button type="button" class="btn btn-block btn-primary" (click)="visualiser('evenement-list')">Evenements</button>
+        </div>
       </div>
     </div>
     <div class="card-body">
       <div class="form-group ">
         <div class="row">
-          <div class="col-sm-6 col-12 mb-sm-0 mb-2">
+          <div class="col-xl-6 col-12 mb-sm-0 mb-2">
             <label for="company">Nom</label>
           </div>
-          <div class="col-sm-6 col-12 mb-sm-0 ">
+          <div class="col-xl-6 col-12 mb-sm-0 ">
             <input type="text" class="form-control" id="company" [(ngModel)]="restaurantDetails.Nom" placeholder="Nom">
           </div>
 
@@ -24,10 +33,10 @@
       </div>
       <div class="form-group ">
         <div class="row">
-          <div class="col-sm-6 col-12 mb-sm-0 mb-2">
+          <div class="col-xl-6 col-12 mb-sm-0 mb-2">
             <label for="company">Adresse</label>
           </div>
-          <div class="col-sm-6 col-12 mb-sm-0 ">
+          <div class="col-xl-6 col-12 mb-sm-0 ">
             <input type="text" class="form-control" id="company" [(ngModel)]="restaurantDetails.Adresse" placeholder="Adresse">
           </div>
 
@@ -35,10 +44,10 @@
       </div>
       <div class="form-group ">
         <div class="row">
-          <div class="col-sm-6 col-12 mb-sm-0 mb-2">
+          <div class="col-xl-6 col-12 mb-sm-0 mb-2">
             <label for="company">Code Postal</label>
           </div>
-          <div class="col-sm-6 col-12 mb-sm-0 ">
+          <div class="col-xl-6 col-12 mb-sm-0 ">
             <input type="text" class="form-control" id="company" [(ngModel)]="restaurantDetails.CodePostal" placeholder="Code Postal">
           </div>
 
@@ -46,10 +55,10 @@
       </div>
       <div class="form-group ">
         <div class="row">
-          <div class="col-sm-6 col-12 mb-sm-0 mb-2">
+          <div class="col-xl-6 col-12 mb-sm-0 mb-2">
             <label for="company">Note</label>
           </div>
-          <div class="col-sm-6 col-12 mb-sm-0 ">
+          <div class="col-xl-6 col-12 mb-sm-0 ">
             <input type="text" class="form-control" id="company" [(ngModel)]="restaurantDetails.Note" placeholder="Note">
           </div>
 
@@ -57,10 +66,10 @@
       </div>
       <div class="form-group ">
         <div class="row">
-          <div class="col-sm-6 col-12 mb-sm-0 mb-2">
+          <div class="col-xl-6 col-12 mb-sm-0 mb-2">
             <label for="company">Description</label>
           </div>
-          <div class="col-sm-6 col-12 mb-sm-0 ">
+          <div class="col-xl-6 col-12 mb-sm-0 ">
             <textarea rows="9" type="text" class="form-control" id="company" [(ngModel)]="restaurantDetails.Description" placeholder="Description" ></textarea>
           </div>
 
@@ -68,10 +77,10 @@
       </div>
       <div class="form-group ">
       <div class="row">
-        <div class="col-sm-6 col-12 mb-sm-0 mb-2">
+        <div class="col-xl-6 col-12 mb-sm-0 mb-2">
           <label for="company">Telephone1</label>
         </div>
-        <div class="col-sm-6 col-12 mb-sm-0 ">
+        <div class="col-xl-6 col-12 mb-sm-0 ">
           <input type="text" class="form-control" id="company" [(ngModel)]="restaurantDetails.Telephone" placeholder="tel1">
         </div>
 
@@ -80,10 +89,10 @@
       <div class="form-group ">
 
       <div class="row">
-        <div class="col-sm-6 col-12 mb-sm-0 mb-2">
+        <div class="col-xl-6 col-12 mb-sm-0 mb-2">
           <label for="company">Telephone2</label>
         </div>
-        <div class="col-sm-6 col-12 mb-sm-0 ">
+        <div class="col-xl-6 col-12 mb-sm-0 ">
           <input type="text" class="form-control" id="company" [(ngModel)]="restaurantDetails.Telephone2" placeholder="tel2">
         </div>
 
@@ -92,10 +101,10 @@
       <div class="form-group ">
 
         <div class="row">
-          <div class="col-sm-6 col-12 mb-sm-0 mb-2">
+          <div class="col-xl-6 col-12 mb-sm-0 mb-2">
             <label for="company">Fax</label>
           </div>
-          <div class="col-sm-6 col-12 mb-sm-0 ">
+          <div class="col-xl-6 col-12 mb-sm-0 ">
             <input type="text" class="form-control" id="company" [(ngModel)]="restaurantDetails.Fax" placeholder="Fax">
           </div>
 
@@ -104,11 +113,11 @@
       <div class="form-group ">
 
         <div class="row">
-          <div class="col-sm-6 col-12 mb-sm-0 mb-2">
+          <div class="col-xl-6 col-12 mb-sm-0 mb-2">
             <label for="company">Horaire</label>
           </div>
-          <div class="col-sm-6 col-12 mb-sm-0 ">
-            <input type="text" class="form-control" id="company" [(ngModel)]="restaurantDetails.Horaire" placeholder="Horaire">
+          <div class="col-xl-6 col-12 mb-sm-0 ">
+            <textarea type="text" class="form-control" id="company" [(ngModel)]="restaurantDetails.Horaire" placeholder="Horaire" rows="3"></textarea>
           </div>
 
         </div>
@@ -116,10 +125,10 @@
       <div class="form-group ">
 
         <div class="row">
-          <div class="col-sm-6 col-12 mb-sm-0 mb-2">
+          <div class="col-xl-6 col-12 mb-sm-0 mb-2">
             <label for="company">Mail</label>
           </div>
-          <div class="col-sm-6 col-12 mb-sm-0 ">
+          <div class="col-xl-6 col-12 mb-sm-0 ">
             <input type="text" class="form-control" id="company" [(ngModel)]="restaurantDetails.Mail" placeholder="Mail">
           </div>
 
@@ -128,22 +137,80 @@
       <div class="form-group ">
 
         <div class="row">
-          <div class="col-sm-6 col-12 mb-sm-0 mb-2">
+          <div class="col-xl-6 col-12 mb-sm-0 mb-2">
             <label for="company">Site</label>
           </div>
-          <div class="col-sm-6 col-12 mb-sm-0 ">
+          <div class="col-xl-6 col-12 mb-sm-0 ">
             <input type="text" class="form-control" id="company" [(ngModel)]="restaurantDetails.Site" placeholder="Site">
           </div>
 
         </div>
       </div>
+      <div class="form-group ">
+
+        <div class="row">
+          <div class="col-xl-6 col-12 mb-sm-0 mb-2">
+            <label for="company">Longitude</label>
+          </div>
+          <div class="col-xl-6 col-12 mb-sm-0 ">
+            <input type="number" class="form-control" id="company" [(ngModel)]="restaurantDetails.Longitude" placeholder="Longitude">
+          </div>
+
+        </div>
+      </div>
+      <div class="form-group ">
+
+        <div class="row">
+          <div class="col-xl-6 col-12 mb-sm-0 mb-2">
+            <label for="company">Latitude</label>
+          </div>
+          <div class="col-xl-6 col-12 mb-sm-0 ">
+            <input type="number" class="form-control" id="company" [(ngModel)]="restaurantDetails.Latitude" placeholder="Latitude">
+          </div>
+
+        </div>
+      </div>
+      <div class="form-group " >
+        <div class="row">
+          <div class="col-xl-6 col-12 mb-sm-0 mb-2" >
+            <label  >Tranche Prix</label>
+
+          </div>
+          <div class="col-xl-6 col-12 mb-sm-0">
+            <select id="typeCuisine" [(ngModel)]="this.tranchePrix" name="restaurant" class="form-control">
+              <option value="">Tranche Prix</option>
+              <option *ngFor="let type of tranchePrixList$ | async" [value]="type.idTranchePrix" [selected]="">{{type.libelle}}</option>
+            </select>
+          </div>
+        </div>
+
+      </div>
+      <div class="form-group " >
+        <div class="row">
+          <div class="col-xl-6 col-12 mb-sm-0 mb-2" >
+            <label  >Selection Foodiles</label>
+
+          </div>
+          <div class="col-xl-6 col-12 mb-sm-0">
+            <div class="form-check form-check-inline mr-5" id="inline-radios">
+              <input  (change)="onItemChange($event.target.value)" type="radio" name="inline-radios" id="inlineRadio1" [checked]="restaurantDetails.selection_foodiles===1 " value="1">
+              <label class="form-check-label" for="inlineRadio1">Oui</label>
+            </div>
+            <div class="form-check form-check-inline ml-5">
+              <input class="form-check-input"  (change)="onItemChange($event.target.value)"  type="radio" [checked]="restaurantDetails.selection_foodiles===0" name="inline-radios" id="inlineRadio2" value="0">
+              <label class="form-check-label" for="inlineRadio2">Non</label>
+            </div>
+          </div>
+        </div>
+
+      </div>
       <div class="row" >
-        <div class="col-sm-6 col-12 mb-sm-0 mb-2">
+        <div class="col-xl-6 col-12 mb-sm-0 mb-2">
           <label for="company">Typed de Cuisine</label>
         </div>
-        <div class="col-sm-6 col-12 mb-sm-0 " style="max-height: 200px; overflow-y: auto">
+        <div class="col-xl-6 col-12 mb-sm-0 " style="max-height: 200px; overflow-y: auto">
           <div class="row">
-            <div class="col-sm-6 col-12 mb-sm-0 mb-2" *ngFor="let item of typeCuisineList$ | async">
+            <div class="col-xl-6 col-12 mb-sm-0 mb-2" *ngFor="let item of typeCuisineList$ | async">
               <div class="custom-control custom-checkbox">
                 <input type="checkbox" class="custom-control-input"
                        (click)="selectTypeCuisine(item)"
@@ -160,12 +227,12 @@
 
       </div>
       <div class="row mt-4" >
-        <div class="col-sm-6 col-12 mb-sm-0 mb-2">
+        <div class="col-xl-6 col-12 mb-sm-0 mb-2">
           <label for="company">Exigences Alimentaires</label>
         </div>
-        <div class="col-sm-6 col-12 mb-sm-0 " style="max-height: 200px; overflow-y: auto">
+        <div class="col-xl-6 col-12 mb-sm-0 " style="max-height: 200px; overflow-y: auto">
           <div class="row">
-            <div class="col-sm-6 col-12 mb-sm-0 mb-2" *ngFor="let item of exigenceAlimentaireList$ | async">
+            <div class="col-xl-6 col-12 mb-sm-0 mb-2" *ngFor="let item of exigenceAlimentaireList$ | async">
               <div class="custom-control custom-checkbox">
                 <input type="checkbox" class="custom-control-input"
                        (click)="selectExigence(item)"
@@ -182,20 +249,41 @@
 
       </div>
 
- <!--     <div class="row mt-4" >
-        <div class="col-sm-6 col-12 mb-sm-0 mb-2">
+      <div class="row mt-4" >
+        <div class="col-xl-6 col-12 mb-sm-0 mb-2">
+          <label for="company">Guides Michelin</label>
+        </div>
+        <div class="col-xl-6 col-12 mb-sm-0 " style="max-height: 200px; overflow-y: auto">
+          <div class="row">
+            <div class="col-xl-6 col-12 mb-sm-0 mb-2" *ngFor="let item of guideMichelin$ | async">
+              <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input"
+                       (click)="selectGuide(item)"
+                       [value]="item.idGuideMichelin"
+                       [id]="checkBoxId4+item.idGuideMichelin"
+                       [checked]="checked(item.idGuideMichelin,4)"
+                >
+                <label class="custom-control-label"  [for]="checkBoxId4+item.idGuideMichelin">{{item.libelle}}</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="row mt-4" >
+        <div class="col-xl-6 col-12 mb-sm-0 mb-2">
           <label for="company">Les ambiances</label>
         </div>
-        <div class="col-sm-6 col-12 mb-sm-0 " style="max-height: 200px; overflow-y: auto">
+        <div class="col-xl-6 col-12 mb-sm-0 " style="max-height: 200px; overflow-y: auto">
           <div class="row">
-            <div class="col-sm-6 col-12 mb-sm-0 mb-2" *ngFor="let item of ambiancesList$ | async">
+            <div class="col-xl-6 col-12 mb-sm-0 mb-2" *ngFor="let item of ambiancesList$ | async">
               <div class="custom-control custom-checkbox">
                 <input type="checkbox" class="custom-control-input"
                        (click)="selectAmbiance(item)"
                        [value]="item.idCadreAmbiance"
-                       [id]="checkBoxId2+item.idCadreAmbiance"
+                       [id]="checkBoxId3+item.idCadreAmbiance"
                        [checked]="checked(item.idCadreAmbiance,3)" >
-                <label class="custom-control-label"  [for]="checkBoxId2+item.idCadreAmbiance">{{item.libelle}}</label>
+                <label class="custom-control-label"  [for]="checkBoxId3+item.idCadreAmbiance">{{item.libelle}}</label>
               </div>
             </div>
 
@@ -204,7 +292,31 @@
         </div>
 
       </div>
--->
+
+      <div class="row mt-4" >
+        <div class="col-xl-6 col-12 mb-sm-0 mb-2">
+          <label for="company">Moyens de paiement</label>
+        </div>
+        <div class="col-xl-6 col-12 mb-sm-0 " style="max-height: 200px; overflow-y: auto">
+          <div class="row">
+            <div class="col-xl-6 col-12 mb-sm-0 mb-2" *ngFor="let item of moyensPaiemenstList$ | async">
+              <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input"
+                       (click)="selectPayment(item)"
+                       [value]="item.idMoyenPaiement"
+                       [id]="checkBoxId5+item.idMoyenPaiement"
+                       [checked]="checked(item.idMoyenPaiement,5)" >
+                <label class="custom-control-label"  [for]="checkBoxId5+item.idMoyenPaiement">{{item.libelle}}</label>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+
+      </div>
+
+
 
     </div>
 

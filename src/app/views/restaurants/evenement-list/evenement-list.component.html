@@ -1,10 +1,10 @@
 <div class="card" *ngIf="!isLoading">
   <div class="card-header ">
     <div class="row">
-      <div class="col-sm-10 col-12">
+      <div class="col-xl-10 col-12">
         Liste des evenements
       </div>
-      <div class="col-sm-2 col-12">
+      <div class="col-xl-2 col-12">
         <button type="button" class="btn btn-block btn-primary" (click)="ajouter()">Ajouter</button>
 
       </div>
@@ -13,7 +13,7 @@
 
   </div>
   <div class="card-body ">
-    <table class="table table-bordered  "  style="width:100%;">
+    <table class="table table-bordered table-responsive "  style="width:100%;">
 
 
       <tr>
@@ -35,7 +35,7 @@
         <td>{{item.dateFin}}</td>
         <td>
           <div class="row pl-2 ">
-            <i (click)="navigateToModify(item.idEvents)" class="fa fa-pencil mr-2" aria-hidden="true"></i>
+            <i (click)="navigateToModify(item.idEvents)" class="fa fa-pencil mr-4" aria-hidden="true"></i>
             <i class="fa fa-trash" aria-hidden="true" (click)="openDialog(item.idEvents)"></i>
 
           </div>

@@ -34,7 +34,7 @@ export class MoyensPaiementComponent implements OnInit {
   public exigenceAlimentaireList$: Observable<ExigenceAlimentaire>;
   private id : string;
   selectedNote="-1";
-  pageSize = 5;
+  pageSize = 10;
   isLoading = true;
   restaurantName: string;
   fullRestaurantList: any = [];

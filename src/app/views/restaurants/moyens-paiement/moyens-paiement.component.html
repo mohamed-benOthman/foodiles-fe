@@ -1,10 +1,10 @@
 <div class="card" *ngIf="!isLoading">
   <div class="card-header ">
     <div class="row">
-      <div class="col-sm-9 col-12">
+      <div class="col-xl-9 col-12">
         Liste des Moyens de Paiement
       </div>
-      <div class="col-sm-3 col-12">
+      <div class="col-xl-3 col-12">
         <button type="button" class="btn btn-block btn-primary" (click)="ajouter()">Ajouter</button>
 
       </div>
@@ -27,7 +27,7 @@
         <td>{{item.libelle}}</td>
         <td>
           <div class="row pl-2 ">
-            <i (click)="navigateToRestaurant(item.idMoyenPaiement, item.libelle)" class="fa fa-pencil mr-2" aria-hidden="true"></i>
+            <i (click)="navigateToRestaurant(item.idMoyenPaiement, item.libelle)" class="fa fa-pencil mr-4" aria-hidden="true"></i>
             <i class="fa fa-trash" aria-hidden="true" (click)="openDialog(item.idMoyenPaiement)"></i>
 
           </div>

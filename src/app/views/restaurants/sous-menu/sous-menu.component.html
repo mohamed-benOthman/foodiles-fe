@@ -1,14 +1,14 @@
 <div class="card" *ngIf="!isLoading">
   <div class="card-header ">
     <div class="row">
-      <div class="col-sm-6 col-12">
+      <div class="col-xl-6 col-12 mb-xl-0 mb-2 ">
         Liste des sous menus
       </div>
-      <div class="col-sm-3 col-12">
+      <div class="col-xl-3 col-12 mb-xl-0 mb-2">
         <button type="button" class="btn btn-block btn-primary" (click)="goToSousList()">Retourner</button>
 
       </div>
-      <div class="col-sm-3 col-12">
+      <div class="col-xl-3 col-12 mb-xl-0 mb-2">
         <button type="button" class="btn btn-block btn-primary" (click)="toModify()">Ajouter</button>
 
       </div>
@@ -31,7 +31,7 @@
         <td>{{item.name}}</td>
         <td>
           <div class="row pl-2 ">
-            <i (click)="toUpdate(item.id, i)" class="fa fa-pencil mr-2" aria-hidden="true"></i>
+            <i (click)="toUpdate(item.id, i)" class="fa fa-pencil mr-4" aria-hidden="true"></i>
             <i class="fa fa-trash" aria-hidden="true" (click)="deleteSousMenu(item.id)"></i>
 
           </div>

@@ -44,6 +44,10 @@ export class RestaurantsService {
     return this.httpClient.post(this.endpoint + 'modifyRestaurant', data);  }
 
 
+  createRestaurant(data ): Observable<any> {
+
+    return this.httpClient.post(this.endpoint + 'create', data);  }
+
   modifyMenu(id, menut ): Observable<any> {
     const menuData = JSON.stringify(menut)
      const data ={
@@ -51,5 +55,9 @@ export class RestaurantsService {
        menu: menuData
      }
     return this.httpClient.post(this.endpoint + 'modifyMenu', data);  }
+
+    getTranchePrix(id){
+    return this.httpClient.get(this.endpoint+'tranchePrix/'+id);
+    }
 
 }

@@ -30,6 +30,7 @@ import {SousMenuItemsModifyComponent} from './sous-menu-items-modify/sous-menu-i
 import {EvenementListComponent} from './evenement-list/evenement-list.component';
 import {EvenementModifyComponent} from './evenement-modify/evenement-modify.component';
 import {EvenementAddComponent} from './evenement-add/evenement-add.component';
+import {RestaurantAddComponent} from './restaurant-add/restaurant-add.component';
 
 const routes: Routes = [
   {
@@ -37,10 +38,11 @@ const routes: Routes = [
     data: {
       title: 'Restaurants'
     },
+
     children: [
       {
         path: '',
-        redirectTo: 'Liste des restaurants'
+        redirectTo: 'list'
       },
       {
         path: 'list',
@@ -61,6 +63,13 @@ const routes: Routes = [
         component: RestaurantModifyComponent,
         data: {
           title: 'Modifier un restaurant'
+        }
+      },
+      {
+        path: 'add',
+        component: RestaurantAddComponent,
+        data: {
+          title: 'Ajouter un restaurant'
         }
       },
       {

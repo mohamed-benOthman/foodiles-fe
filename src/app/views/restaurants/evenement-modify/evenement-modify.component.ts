@@ -76,7 +76,7 @@ export class EvenementModifyComponent implements OnInit {
     const dateDebut = this.dateDebut + ' ' + this.timeDebut;
     const dateFin = this.dateFin + ' ' + this.timeFin;
     this.isLoading = true;
-    this.evenementService.modifyEvent(this.titre, this.path, this.details, dateFin, dateFin, this.restaurant.idRestaurant, this.idEvents).subscribe((res: any) => {
+    this.evenementService.modifyEvent(this.titre, this.path, this.details, dateDebut, dateFin, this.restaurant.idRestaurant, this.idEvents).subscribe((res: any) => {
       this.success = true;
       this.isLoading = false;
      /* setTimeout(() => this.navigateBack(), 1200);*/

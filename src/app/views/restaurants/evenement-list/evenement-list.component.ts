@@ -11,6 +11,7 @@ import {ExigenceAlimentaire} from '../../../interfaces/exigenceAlimentaire';
 import {PageEvent} from '@angular/material/paginator';
 import {ModalComponent} from '../../../components/modal/modal.component';
 import {EvenementsService} from '../../../services/evenements.service';
+import {filter} from 'rxjs/operators';
 
 @Component({
   selector: 'app-evenement-list',
@@ -22,6 +23,7 @@ export class EvenementListComponent implements OnInit {
               private exigenceAlimentaireService: ExigenceAlimentaireService ,
               private moyenPaiementService: MoyenPaiementService,
               private typeCuisineService: TypeCuisineService,
+              private activatedRoute: ActivatedRoute,
               private router:Router,
               private evenementService: EvenementsService,
               public dialog: MatDialog,
@@ -36,7 +38,7 @@ export class EvenementListComponent implements OnInit {
   public exigenceAlimentaireList$: Observable<ExigenceAlimentaire>;
   private id : string;
   selectedNote="-1";
-  pageSize = 5;
+  pageSize = 10;
   isLoading = true;
   restaurantName: string;
   fullRestaurantList: any = [];
@@ -49,6 +51,24 @@ export class EvenementListComponent implements OnInit {
       this.restaurantsLength = res.length;
       this.isLoading = false;
     });
+
+    this.activatedRoute.queryParams.pipe(
+      filter(params => params.id)
+
+    ).subscribe(params => {
+      if (params.id)
+      this.evenementService.getAll().subscribe((res :any)=>{
+        this.restaurantslist=res;
+        this.restaurantslist = this.restaurantslist.filter((item)=>item.idRestaurant.idRestaurant==params.id)
+        this.pageSlice = this.restaurantslist.slice(0, this.pageSize);
+
+        this.restaurantsLength = res.length;
+        this.isLoading = false;
+      });
+
+
+      }
+    );
 
   };
 

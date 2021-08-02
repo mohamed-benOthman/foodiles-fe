@@ -38,7 +38,10 @@ export class MenuViewComponent implements OnInit {
     );
   }
 
+  goBack(){
+    this.router.navigate([`restaurants/menu/`], );
 
+  }
 
 
 }

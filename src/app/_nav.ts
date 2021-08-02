@@ -9,7 +9,8 @@ export const navItems: INavData[] = [
   },
   {
     title: true,
-    name: 'Les Restaurants'
+    name: 'Les Restaurants',
+
   },
   {
     name: 'Liste des Restaurants',

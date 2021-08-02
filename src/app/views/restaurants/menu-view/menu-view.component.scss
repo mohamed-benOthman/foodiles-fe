@@ -1,4 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Allura&family=Arizonia&family=Fredericka+the+Great&family=Raleway:wght@300;500&family=Roboto:ital,wght@0,500;0,700;1,700&display=swap');
 .fa:hover{
   cursor: pointer;
   color: #dc0934;
+}
+h1{
+  font-family: 'Arizonia', cursive !important;
+  color:#dc0934 !important ;
+}
+h2{
+  font-family: 'Allura', cursive !important;
+  color:#dc0934 !important ;
+}
+h4{
+  font-family: 'Roboto', sans-serif !important;
+  font-weight: 500;
+  color:#2f353a !important ;
+  opacity: 0.70 !important ;
+}
+h5{
+  font-family: 'Raleway', sans-serif !important;
+  color:#2f353a !important ;
+  opacity: 0.7 !important ;
+  font-weight: 300 !important ;
+}
+.name{
+  font-family: 'Raleway', sans-serif !important;
+  color:#2f353a !important ;
+  opacity: 0.75 !important ;
+  font-weight: 500 !important;
+}
+
+.row{
+  margin-right: 0px !important;
+ margin-left: 0px !important;
+}
+.bigContainer{
+  width: 50% !important;
+}
+@media only screen and (max-width: 750px) {
+  .bigContainer{
+    width: 100% !important;
+  }
 }

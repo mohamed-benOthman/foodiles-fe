@@ -33,7 +33,7 @@ export class ListeRestaurantsComponent implements OnInit {
   public selectedExigenceAlimentaire = '';
   public exigenceAlimentaireList$: Observable<ExigenceAlimentaire>;
   selectedNote = '-1';
-  pageSize = 5;
+  pageSize = 10;
   isLoading = true;
   restaurantName: string;
   fullRestaurantList: any = [];
@@ -132,6 +132,9 @@ export class ListeRestaurantsComponent implements OnInit {
   }
   navigateToModifyRestaurant(id) {
     this.router.navigate([`restaurants/modify/`], { queryParams: { id: id } });
+  }
+  navigateToAddRestaurant() {
+    this.router.navigate([`restaurants/add/`], );
   }
 
 
