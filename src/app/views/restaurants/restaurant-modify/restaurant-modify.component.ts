@@ -27,6 +27,7 @@ export class RestaurantModifyComponent implements OnInit {
   checkBoxId4 = 'check4sd';
   checkBoxId3 = 'check89';
   checkBoxId5 = 'checksdfsd89';
+  public isActive;
   public typeCuisineList$: Observable<any>;
   public ambiancesList$: Observable<any>;
   public exigenceAlimentaireList$: Observable<any>;
@@ -163,7 +164,8 @@ export class RestaurantModifyComponent implements OnInit {
       Longitude: this.restaurantDetails.Longitude,
       Latitude: this.restaurantDetails.Latitude,
       moyenPaiements:this.restaurantDetails.moyenPaiements,
-      tranchePrix: this.tranchePrix
+      tranchePrix: this.tranchePrix,
+      isActive: this.isActive,
 
     };
     console.log(data);
@@ -172,6 +174,13 @@ export class RestaurantModifyComponent implements OnInit {
         this.success=true;
 
     });
+  }
+
+  changeisActive(){
+    if (this.isActive)
+      this.isActive=false;
+    else
+      this.isActive=true;
   }
   navigateBack() {
     this.router.navigate([`restaurants/list/`]);
@@ -186,7 +195,13 @@ export class RestaurantModifyComponent implements OnInit {
       this.exigenceAlimentaireList$ = this.exigenceAlimentaireService.getAllExigenceAlimentaire();
       const restaurantList = res;
       this.restaurantDetails = restaurantList.filter((item) => item.idRestaurant.toString() === id.toString())[0];
+      this.isActive= this.restaurantDetails.isActive;
+      console.log(this.isActive)
       this.isLoading = false;
     });
+  }
+
+  goBack() {
+    this.router.navigate([`restaurants/list/`], );
   }
 }

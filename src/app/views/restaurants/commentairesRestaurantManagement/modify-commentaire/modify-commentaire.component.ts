@@ -13,6 +13,7 @@ export class ModifyCommentaireComponent implements OnInit {
   public commentaireDetails$: Observable<any>;
   public commentaireDetails: any;
   public isLoading=false;
+  public isActive:boolean;
   constructor(
     private activatedRoute: ActivatedRoute,
     private router:Router,
@@ -28,6 +29,7 @@ export class ModifyCommentaireComponent implements OnInit {
       this.restaurantId = params.restaurantId;
        this.commentaireService.getCommentaireById(params.id).subscribe((res: any) => {
          this.commentaireDetails = res;
+         this.isActive=this.commentaireDetails.isActive;
          this.isLoading= false;
        });
 
@@ -35,14 +37,22 @@ export class ModifyCommentaireComponent implements OnInit {
     );
   }
 
-  modifyCommentaire(id, title, comment) {
-    this.commentaireService.modifyCommentaireById(id, title, comment).subscribe((res: any) => {
+  modifyCommentaire(id, title, comment, isActive) {
+    this.commentaireService.modifyCommentaireById(id, title, comment, isActive).subscribe((res: any) => {
        this.navigateBack();
     });
   }
 
   navigateBack(){
     this.router.navigate([`restaurants/commentaires-restaurant/`], { queryParams: { id: this.restaurantId } });
+  }
+
+
+  changeActive(){
+     if (this.isActive===false)
+       this.isActive=true;
+     else
+       this.isActive=false;
   }
 
 }

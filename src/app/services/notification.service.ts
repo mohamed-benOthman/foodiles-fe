@@ -15,7 +15,7 @@ export class NotificationService {
       'Authorization': `Bearer ${environment.firebaseKey}`
     });
     const bodyData = {
-      to : '/topics/' + topics,
+      to : '/topics/' + environment.topics,
       mutable_content : true,
       content_available: true,
       priority: 'high',

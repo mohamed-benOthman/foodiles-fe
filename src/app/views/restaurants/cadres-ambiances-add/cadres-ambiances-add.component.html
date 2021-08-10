@@ -1,0 +1,30 @@
+<div *ngIf="!isLoading" class="row justify-content-center">
+  <div class="card card-container">
+    <div class="card-header">
+      <strong>Ajouter un Cadre d'ambiance </strong>
+
+    </div>
+    <div class="card-body">
+      <div class="form-group">
+        <label for="company">Libelle</label>
+        <input type="text" class="form-control" id="company" [(ngModel)]="this.libelle" placeholder="Ajouter un libelle">
+      </div>
+
+      <div class="row ">
+        <div class="col-md-6 col-12 mb-md-0 mb-2">
+          <button type="button" class="btn btn-block btn-primary" (click)="navigateBack()">Retourner</button>
+
+        </div>
+        <div class="col-md-6 col-12">
+          <button type="button" class="btn btn-block btn-primary" [disabled]="libelle===''" (click)="addExigence()">Ajouter</button>
+
+        </div>
+        <div *ngIf="this.success===true" class="row justify-content-center w-100">
+          <h6 style="color: green">Le moyen de paiement est ajouté avec succées</h6>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<div *ngIf="isLoading" class="row justify-content-center"><app-spinner></app-spinner></div>

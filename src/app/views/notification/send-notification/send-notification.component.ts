@@ -30,7 +30,7 @@ export class SendNotificationComponent implements OnInit {
   }
 
   checkDisabled() {
-    if (this.title === '' || this.body === '' || this.topics === '' ) {
+    if (this.title === '' || this.body === ''  ) {
       return true;
     } else { return false; }
   }

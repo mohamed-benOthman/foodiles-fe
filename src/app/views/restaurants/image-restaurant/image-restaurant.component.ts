@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {DomSanitizer} from '@angular/platform-browser';
 import {ImageService} from '../../../services/image.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {RestaurantsService} from '../../../services/restaurants.service';
 import {filter, last} from 'rxjs/operators';
 import {Observable} from 'rxjs';
@@ -20,6 +20,7 @@ export class ImageRestaurantComponent implements OnInit {
               private  imageService: ImageService,
               private activatedRoute: ActivatedRoute,
               private restaurantService: RestaurantsService,
+              private router: Router,
               public dialog: MatDialog) { }
 
   public restaurantDetails$: Observable<any>;
@@ -30,6 +31,9 @@ export class ImageRestaurantComponent implements OnInit {
   photoIdSelected: string;
   public  uploadPourcentage = 0;
   public restoId ;
+  public isActive;
+  public deactivate = "Désactiver";
+  public activate = "Activer";
 
   ngOnInit(): void {
     this.activatedRoute.queryParams.pipe(
@@ -72,6 +76,11 @@ export class ImageRestaurantComponent implements OnInit {
       dialogRef.close();
     });
   }
+  roleFunction2 = (dialogRef: MatDialogRef<any>) => {
+    this.imageService.changeActivity(this.photoIdSelected, !this.isActive).subscribe((res: any) => {
+      dialogRef.close();
+    });
+  }
   openDialog(photoId: string) {
     this.photoIdSelected = photoId;
     const dialogRef = this.dialog.open(ModalComponent, {
@@ -91,6 +100,30 @@ export class ImageRestaurantComponent implements OnInit {
         this.getImage();
         this.isLoading = false;
     });
+
+    });
+  }
+
+  openDialog2(photoId: string, isActive : boolean) {
+    this.photoIdSelected = photoId;
+    this.isActive=isActive;
+    const dialogRef = this.dialog.open(ModalComponent, {
+      data: {
+        text: this.isActive ? 'Voulez vous désactiver cette photo'  : 'Voulez vous activer cette photo',
+        roleFunction: this.roleFunction2,
+        buttonText: isActive ? 'Désactiver' : 'Activer'
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+
+      this.isLoading = true;
+      this.restaurantDetails$  = this.restaurantService.getRestaurantById(this.restaurantDetails.idRestaurant);
+      this.restaurantDetails$.subscribe(async (res) => {
+        this.restaurantDetails = res;
+        this.getImage();
+        this.isLoading = false;
+      });
 
     });
   }
@@ -120,6 +153,8 @@ export class ImageRestaurantComponent implements OnInit {
         this.uploadPourcentage = 0;
       }     );                                                                                                                                                 ``;
   }
-
+  navigateToModifyRestaurant() {
+    this.router.navigate([`restaurants/modify/`], { queryParams: { id: this.restoId } });
+  }
 
 }

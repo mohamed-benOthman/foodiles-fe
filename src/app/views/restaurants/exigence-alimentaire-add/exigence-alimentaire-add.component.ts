@@ -20,14 +20,17 @@ export class ExigenceAlimentaireAddComponent implements OnInit {
   navigateBack(){
     this.router.navigate([`restaurants/exigences-alimentaires/`]);
   }
-  addExigence() {
+  async addExigence() {
     this.isLoading=true;
-    this.exigenceService.addExigenceAlimentaire(this.libelle).subscribe((res:any)=>{
+    await this.exigenceService.addExigenceAlimentaire(this.libelle).toPromise();
+    this.isLoading=false;
+    setTimeout(()=>this.navigateBack(),1200)
+/*    this.exigenceService.addExigenceAlimentaire(this.libelle).subscribe((res:any)=>{
       this.isLoading=false;
       setTimeout(()=>this.navigateBack(),1200)
     },error => {
       this.isLoading=false;
       setTimeout(()=>this.navigateBack(),1200)
-    })
+    })*/
   }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
 import {RestaurantsService} from '../../../services/restaurants.service';
 import {map} from 'rxjs/operators';
@@ -28,8 +28,11 @@ export class ListeRestaurantsComponent implements OnInit {
   typeCuisineList$: Observable<CuisineType>;
   restaurantsLength: number;
   restaurantslist: any = [];
+  public innerWidth: any;
+
   public pageSlice = [];
   public selectedCuisineType = '';
+  public searchedPostalCode = '';
   public selectedExigenceAlimentaire = '';
   public exigenceAlimentaireList$: Observable<ExigenceAlimentaire>;
   selectedNote = '-1';
@@ -37,8 +40,13 @@ export class ListeRestaurantsComponent implements OnInit {
   isLoading = true;
   restaurantName: string;
   fullRestaurantList: any = [];
-  restaurantToDeleteId : any;
+  restaurantToDeleteId: any;
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.innerWidth = window.innerWidth;
+  }
   ngOnInit(): void {
+    this.innerWidth = window.innerWidth;
 
     this.restaurantList$ = this.restaurantService.getAllRestaurants();
      this.restaurantList$.subscribe((res: any) => {
@@ -72,6 +80,14 @@ export class ListeRestaurantsComponent implements OnInit {
 
   }
 
+  searchPostalCode(searchBy) {
+    searchBy = searchBy.toString().toLocaleLowerCase();
+    return this.restaurantslist.filter((exp) =>
+      exp.CodePostal.toString().toLocaleLowerCase().indexOf(searchBy) !== -1
+    );
+
+  }
+
   checkType(restaurantId) {
 
     const restaurant = this.restaurantslist.filter(item =>
@@ -98,6 +114,7 @@ export class ListeRestaurantsComponent implements OnInit {
     }
   }
   filtrer() {
+    console.log(this.searchedPostalCode);
    if (this.selectedCuisineType.length > 0) {
 
      this.restaurantslist = this.restaurantslist.filter((restaurant) =>
@@ -124,6 +141,11 @@ export class ListeRestaurantsComponent implements OnInit {
       this.pageSlice = this.restaurantslist.slice(0, this.pageSize);
     }
 
+    if (this.searchedPostalCode) {
+       console.log(this.searchedPostalCode);
+      this.restaurantSearchPostalCode();
+    }
+
 
   }
 
@@ -148,14 +170,25 @@ export class ListeRestaurantsComponent implements OnInit {
     })*/
   }
   restaurantSearch() {
-    this.isLoading=true;
+    this.isLoading = true;
     console.log(this.restaurantName);
     this.restaurantslist = this.restaurantName
       ? this.search(this.restaurantName)
       : this.fullRestaurantList;
     this.restaurantsLength = this.restaurantslist.length;
     this.pageSlice = this.restaurantslist.slice(0, this.pageSize);
-    this.isLoading=false
+    this.isLoading = false;
+
+  }
+
+  restaurantSearchPostalCode() {
+    this.isLoading = true;
+    this.restaurantslist = this.searchedPostalCode
+      ? this.searchPostalCode(this.searchedPostalCode)
+      : this.fullRestaurantList;
+    this.restaurantsLength = this.restaurantslist.length;
+    this.pageSlice = this.restaurantslist.slice(0, this.pageSize);
+    this.isLoading = false;
 
   }
   reset() {
@@ -172,13 +205,14 @@ export class ListeRestaurantsComponent implements OnInit {
     this.selectedCuisineType = '';
     this.selectedExigenceAlimentaire = '';
     this.selectedNote = '-1';
+    this.searchedPostalCode = '';
 
   }
   roleFunction = (dialogRef: MatDialogRef<any>) => {
     this.restaurantService.deleteRestaurant(this.restaurantToDeleteId).subscribe((res: any) => {
       dialogRef.close();
     },
-    error=> dialogRef.close());
+    error => dialogRef.close());
   }
   openDialog(restaurantId: string) {
     this.restaurantToDeleteId = restaurantId;

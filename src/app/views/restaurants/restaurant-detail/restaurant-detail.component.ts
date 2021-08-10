@@ -97,5 +97,7 @@ export class RestaurantDetailComponent implements OnInit {
   toModify() {
     this.router.navigate([`restaurants/modify/`], { queryParams: { id: this.restoId } });
   }
-
+  goBack() {
+    this.router.navigate([`restaurants/list/`], );
+  }
 }

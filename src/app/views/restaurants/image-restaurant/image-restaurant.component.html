@@ -4,7 +4,11 @@
       <div class="col-xl-6 col-12">
         <h5>{{restaurantDetails.Nom}}</h5>
       </div>
-      <div class="col-xl-6 col-12" >
+      <div class="col-xl-2 col-12 mb-xl-0 mb-2">
+        <button type="button" class="btn btn-block btn-primary" (click)="navigateToModifyRestaurant()">Vers le Restaurant</button>
+
+      </div>
+      <div class="col-xl-4 col-12" >
         <div class="col-10">
           <input class="btn btn-block btn-primary"  type="file" name="file" (change)="uploadFile($event)">
         </div>
@@ -20,6 +24,7 @@
       <div class="image-area">
         <img [src]="type.content"   alt="Preview">
         <a (click)="openDialog(type.idPhoto)" class="remove-image"  style="display: inline;">&#215;</a>
+        <a (click)="openDialog2(type.idPhoto, type.isActive)" class="remove-image"  style="display: inline; top:40px">{{type.isActive ? '&#9733;' : '&#9734;' }}</a>
       </div>
     </div>
 

@@ -317,6 +317,27 @@
       </div>
 
 
+      <div class="row mt-4" >
+        <div class="col-6 mb-sm-0 mb-2">
+          <label for="company">Activer le restaurant</label>
+        </div>
+        <div class="col-6  mb-sm-0 " style="max-height: 200px; overflow-y: auto">
+          <div class="row">
+            <div class="col-6  mb-sm-0 mb-2">
+              <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input"
+                       (change)="changeisActive()"
+                        id="isActive"
+                       [checked]="isActive" >
+                <label class="custom-control-label"  for="isActive"></label>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+
+      </div>
 
     </div>
 

@@ -44,11 +44,15 @@ export class EvenementAddComponent implements OnInit {
   navigateBack() {
     this.router.navigate([`restaurants/evenement-list/`]);
   }
-  addExigence() {
+  async addExigence() {
     const dateDebut = this.dateDebut + ' '+ this.timeDebut;
     const dateFin = this.dateFin + ' '+this.timeFin;
     this.isLoading=true;
-    this.evenementService.addEvent(this.titre, this.path,this.details, dateFin, dateFin,this.restaurant).subscribe((res:any)=>{
+    await this.evenementService.addEvent(this.titre, this.path,this.details, dateDebut, dateFin,this.restaurant).toPromise();
+    this.success=true;
+    this.isLoading=false;
+    setTimeout(()=>this.navigateBack(),1200)
+/*    this.evenementService.addEvent(this.titre, this.path,this.details, dateFin, dateFin,this.restaurant).subscribe((res:any)=>{
       this.success=true;
       this.isLoading=false;
       setTimeout(()=>this.navigateBack(),1200)
@@ -56,7 +60,7 @@ export class EvenementAddComponent implements OnInit {
       this.success=true;
       this.isLoading=false;
       setTimeout(()=>this.navigateBack(),1200)
-    })
+    })*/
   }
   uploadFile(event) {
     this.isLoading=true;
@@ -69,7 +73,8 @@ export class EvenementAddComponent implements OnInit {
         this.isLoading=true;
         if (res.type === HttpEventType.UploadProgress) {
         } else {
-          this.path=res;
+
+          this.path=res.error.text;
           this.isLoading=false;
           console.log(this.path);
           window.alert("L'image est ajouté avec succées")

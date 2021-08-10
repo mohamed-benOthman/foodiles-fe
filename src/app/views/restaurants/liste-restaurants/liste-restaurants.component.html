@@ -1,31 +1,36 @@
 <div class="card" *ngIf="!isLoading">
   <div class="card-header ">
     <div class="row">
-      <div class="col-xl-6 col-12 mb-xl-0 mb-2">
-        Liste des Restaurants
-      </div>
-      <div class="col-xl-6 col-12">
+      <div class="col-xl-5 col-12">
         <div class="row">
-        <div class="col-xl-9 col-12 mb-xl-0 mb-3">
-          <input   [(ngModel)]="restaurantName"  [ngModelOptions]="{standalone: true}" (change)="restaurantSearch()"   type="text"   class="form-control " placeholder="Tapez le nom du restaurant">
+            <div class="col-xl-4 col-12 mb-xl-0 mb-2">
+             Liste des Restaurants
+             </div>
+          <div class="col-xl-8 col-12 mb-xl-0 mb-3">
+            <input   [(ngModel)]="restaurantName"  [ngModelOptions]="{standalone: true}" (change)="restaurantSearch()"   type="text"   class="form-control " placeholder="Tapez le nom du restaurant pour chercher">
 
-        </div>
-          <div class="col-xl-3 col-12">
-            <button type="button" class="btn btn-block btn-primary" (click)="navigateToAddRestaurant()">Ajouter</button>
           </div>
-<!--
-        <div class="col-3">
-          <button type="button" class="btn btn-block btn-primary">Chercher</button>
-        </div>-->
         </div>
+      </div>
+      <div class="col-xl-5 col-12 mb-xl-0 mb-3">
+
+      </div>
+      <div class="col-xl-2 col-12">
+
+
+
+
+            <button type="button" class="btn btn-block btn-primary" (click)="navigateToAddRestaurant()">Ajouter</button>
+
+
       </div>
     </div>
     <br>
     <div class="row">
-      <div class="col-xl-3 col-12">
+      <div class="col-xl-5 col-12">
         <div class="form-group row">
           <label class="col-xl-4 col-form-label" for="select1">Type de Cuisine</label>
-          <div class="col-md-8">
+          <div class="col-xl-8 col-12">
             <select id="typeCuisine" [(ngModel)]="selectedCuisineType" name="typeCuisine" class="form-control">
               <option value="">Type de Cuisine</option>
               <option *ngFor="let type of typeCuisineList$ | async" [value]="type.Libelle">{{type.Libelle}}</option>
@@ -33,10 +38,10 @@
           </div>
         </div>
       </div>
-      <div class="col-xl-3 col-12" >
+      <div class="col-xl-5 col-12" >
         <div class="form-group row">
           <label class="col-xl-4 col-form-label" for="select1" >Exigence</label>
-          <div class="col-md-8">
+          <div class="col-xl-8 col-12">
             <select id="exigenceAlimentaire" [(ngModel)]="selectedExigenceAlimentaire" name="exigenceAlimentaire" class="form-control">
               <option value="">Exigence Alimentaire</option>
               <option *ngFor="let type of exigenceAlimentaireList$ | async" [value]="type.Libelle">{{type.Libelle}}</option>
@@ -44,11 +49,12 @@
           </div>
         </div>
       </div>
+      <div class="col-xl-2 col-12 mb-xl-0 mb-3">     <button type="button" class="btn btn-block btn-primary" *ngIf="innerWidth>=1200" (click)="filtrer()">Filtrer</button></div>
 
-      <div class="col-xl-3 col-12">
+      <div class="col-xl-5 col-12">
         <div class="form-group row">
           <label class="col-xl-4 col-form-label" for="select1">Note</label>
-          <div class="col-md-8">
+          <div class="col-xl-8 col-12">
             <select id="note" [(ngModel)]="selectedNote" name="note" class="form-control">
               <option value="-1">Choisir une note</option>
               <option value="0">0</option>
@@ -61,14 +67,20 @@
           </div>
         </div>
       </div>
-      <div class="col-xl-3 col-12">
-        <div class="row">
-          <div class="col-xl-6 col-12 mb-xl-0 mb-3">     <button type="button" class="btn btn-block btn-primary" (click)="filtrer()">Filtrer</button></div>
+      <div class="col-xl-5 col-12" >
+        <div class="form-group row">
+          <label class="col-xl-4 col-form-label" >Code postale</label>
+          <div class="col-xl-8 col-12">
+            <input   [(ngModel)]="searchedPostalCode"      type="number"   class="form-control " placeholder="Tapez le code postale">
 
-          <div class="col-xl-6 col-12 mb-xl-0 mb-3">     <button type="button" class="btn btn-block btn-primary" (click)="reset()">Réinitialiser</button></div>
+          </div>
         </div>
-
       </div>
+
+      <div class="col-xl-2 col-12 mb-xl-0 mb-3" *ngIf="innerWidth<1200">     <button type="button" class="btn btn-block btn-primary" (click)="filtrer()">Filtrer</button></div>
+
+          <div class="col-xl-2 col-12 mb-xl-0 mb-3">     <button type="button" class="btn btn-block btn-primary" (click)="reset()">Réinitialiser</button></div>
+
     </div>
 
   </div>

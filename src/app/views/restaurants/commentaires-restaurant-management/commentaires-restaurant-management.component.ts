@@ -69,4 +69,8 @@ export class CommentairesRestaurantManagementComponent implements OnInit {
     this.router.navigate([`restaurants/commentaires-modify/`], { queryParams: { id: id , restaurantId: this.restaurantDetails.idRestaurant} });
   }
 
+  navigateToModifyRestaurant() {
+    this.router.navigate([`restaurants/modify/`], { queryParams: { id: this.restaurantDetails.idRestaurant } });
+  }
+
 }

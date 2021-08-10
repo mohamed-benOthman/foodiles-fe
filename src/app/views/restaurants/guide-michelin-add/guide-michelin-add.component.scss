@@ -1,0 +1,9 @@
+.card-container{
+  width: 50% !important;
+}
+@media only screen and (max-width: 900px) {
+  .card-container{
+    width: 100% !important;
+  }
+}
+

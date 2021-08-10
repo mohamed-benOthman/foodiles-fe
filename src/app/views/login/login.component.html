@@ -27,13 +27,13 @@
                   </div>
                   <div class="row">
                     <div class="col-12 d-flex justify-content-center">
-                      <button type="button" class="btn btn-primary px-4" (click)="onSubmit()"  [disabled]="loginForm.invalid" >Se Connecter</button>
+                      <button type="button" class="btn btn-primary px-4" (click)="onSubmit()"  [disabled]="loginForm.invalid || disabled" >Se Connecter</button>
                     </div>
 
                   </div>
                   <br>
                   <div class="row justify-content-center">
-                  <h6 *ngIf="Error" style="color: #dc0934">Les informations d'identification invalides</h6>
+                  <h6 *ngIf="this.authService.error" style="color: #dc0934" class="w-100">Les informations d'identification invalides</h6>
                   </div>
                 </form>
               </div>

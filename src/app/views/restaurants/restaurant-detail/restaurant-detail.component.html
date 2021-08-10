@@ -1,11 +1,13 @@
 <div class="card" *ngIf="!isLoading">
   <div class="card-header ">
     <div class="row">
-      <div class="col-xl-9 col-12">
+      <div class="col-xl-8 col-12">
        <h5>{{restaurantDetails.Nom}}</h5>
       </div>
-
-      <div class="col-xl-3 col-12 mb-sm-0 mb-2">
+      <div class="col-xl-2 col-12 mb-xl-0 mb-2">
+        <button type="button" class="btn btn-block btn-primary" (click)="goBack()">Retourner</button>
+      </div>
+      <div class="col-xl-2 col-12 mb-xl-0 mb-2">
         <button type="button" class="btn btn-block btn-primary" (click)="toModify()">Modifier</button>
       </div>
 
@@ -26,68 +28,74 @@
         <h6>Adresse du restaurant</h6>
       </div>
       <div class="col-xl-6 col-12">
-        {{restaurantDetails.Adresse}}
+        {{restaurantDetails.Adresse ? restaurantDetails.Adresse : '****'}}
       </div>
       <div class="col-xl-6 col-12">
         <h6>Code Postale</h6>
       </div>
       <div class="col-xl-6 col-12">
-        {{restaurantDetails.CodePostal}}
+        {{restaurantDetails.CodePostal  ? restaurantDetails.CodePostal : '****'}}
       </div>
       <div class="col-xl-6 col-12">
         <h6>Note</h6>
       </div>
       <div class="col-xl-6 col-12">
-        {{restaurantDetails.Note}}
+        {{restaurantDetails.Note  ? restaurantDetails.Note : '****'}}
       </div>
       <div class="col-xl-6 col-12">
         <h6>Description</h6>
       </div>
       <div class="col-xl-6 col-12">
-        {{restaurantDetails.Description}}
+        {{restaurantDetails.Description  ? restaurantDetails.Description : '****'}}
       </div>
       <div class="col-xl-6 col-12">
         <h6>Telephone1</h6>
       </div>
       <div class="col-xl-6 col-12">
-        {{restaurantDetails.Telephone}}
+        {{restaurantDetails.Telephone  ? restaurantDetails.Telephone : '****'}}
       </div>
 
       <div class="col-xl-6 col-12">
         <h6>Telephone2</h6>
       </div>
       <div class="col-xl-6 col-12">
-        {{restaurantDetails.Telephone2}}
+        {{restaurantDetails.Telephone2  ? restaurantDetails.Telephone2 : '****'}}
       </div>
       <div class="col-xl-6 col-12">
         <h6>Tranche Prix</h6>
       </div>
       <div class="col-xl-6 col-12">
-        {{restaurantDetails.tranchePrix.libelle}}
+        {{restaurantDetails.tranchePrix  ? restaurantDetails.tranchePrix.libelle : '****'}}
       </div>
       <div class="col-xl-6 col-12">
         <h6>Fax</h6>
       </div>
       <div class="col-xl-6 col-12">
-        {{restaurantDetails.Fax}}
+        {{restaurantDetails.Fax  ? restaurantDetails.Fax : '****'}}
       </div>
       <div class="col-xl-6 col-12">
         <h6>Horaire</h6>
       </div>
       <div class="col-xl-6 col-12">
-        {{restaurantDetails.Horaire}}
+        {{restaurantDetails.Horaire  ? restaurantDetails.Horaire : '****'}}
       </div>
       <div class="col-xl-6 col-12">
         <h6>Mail</h6>
       </div>
       <div class="col-xl-6 col-12">
-        {{restaurantDetails.Mail}}
+        {{restaurantDetails.Mail  ? restaurantDetails.Mail : '****'}}
       </div>
       <div class="col-xl-6 col-12">
         <h6>Site</h6>
       </div>
       <div class="col-xl-6 col-12">
-        {{restaurantDetails.Site}}
+        {{restaurantDetails.Site  ? restaurantDetails.Site : '****'}}
+      </div>
+      <div class="col-xl-6 col-12">
+        <h6>Ce restaurant est activé?</h6>
+      </div>
+      <div class="col-xl-6 col-12">
+        {{restaurantDetails.isActive ? 'Oui' : 'Non'}}
       </div>
 
       <div class="col-xl-6 col-12">
@@ -163,8 +171,8 @@
       <div class="col-xl-6 col-12">
         <h6>Position</h6>
       </div>
-      <div class="col-xl-6 col-12">
-        {{restaurantDetails.Site}}
+      <div class="col-xl-6 col-12" *ngIf="restaurantDetails.longitude">
+        {{restaurantDetails.Longitude -- restaurantDetails.Latitude}}
       </div>
 
     </div>

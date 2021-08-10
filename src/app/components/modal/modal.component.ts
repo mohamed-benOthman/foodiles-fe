@@ -15,4 +15,9 @@ export class ModalComponent implements OnInit {
   close(): void {
     this.dialogRef.close();
   }
+
+  success() {
+    this.data.roleFunction(this.dialogRef);
+    this.close();
+  }
 }

@@ -64,7 +64,7 @@ export class GuideMichelinComponent implements OnInit {
 
   }
   roleFunction = (dialogRef: MatDialogRef<any>) => {
-    this.exigenceAlimentaireService.deleteExigence(this.id).subscribe((res: any) => {
+    this.moyenPaiementService.deletePaiement(this.id).subscribe((res: any) => {
         dialogRef.close();
       },
       error=> dialogRef.close());
@@ -80,7 +80,7 @@ export class GuideMichelinComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      this.moyenPaiementService.deletePaiement(this.id).subscribe(resds=>{
+
         this.moyenPaiementService.getAllPaiement().subscribe((res:any)=>{
           this.restaurantslist=res;
           this.pageSlice = this.restaurantslist.slice(0, this.pageSize);
@@ -92,12 +92,9 @@ export class GuideMichelinComponent implements OnInit {
           this.restaurantsLength = error.length;
           this.isLoading = false;
 
-        })
+        });
 
-      }, error => {
-           window.location.reload()
 
-      });
 
     });
   }

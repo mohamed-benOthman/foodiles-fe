@@ -1,11 +1,15 @@
 <div class="card" *ngIf="!isLoading">
   <div class="card-header ">
     <div class="row">
-      <div class="col-xl-10 col-12">
+      <div  [ngClass]="toRestaurant ? 'col-xl-8 col-12' : 'col-xl-10 col-12'">
         Liste des evenements
       </div>
       <div class="col-xl-2 col-12">
         <button type="button" class="btn btn-block btn-primary" (click)="ajouter()">Ajouter</button>
+
+      </div>
+      <div class="col-xl-2 col-12 mb-xl-0 mb-2" *ngIf="toRestaurant">
+        <button type="button" class="btn btn-block btn-primary" (click)="navigateToModifyRestaurant()">Vers le Restaurant</button>
 
       </div>
     </div>

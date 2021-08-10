@@ -97,7 +97,7 @@ export class EvenementModifyComponent implements OnInit {
         this.isLoading = true;
         if (res.type === HttpEventType.UploadProgress) {
         } else {
-          this.path = res;
+          this.path = res.error.text;;
           this.convertImage();
           this.isLoading = false;
           console.log(this.path);

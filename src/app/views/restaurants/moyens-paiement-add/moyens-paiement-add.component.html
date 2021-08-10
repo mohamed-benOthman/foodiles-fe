@@ -1,5 +1,5 @@
 <div *ngIf="!isLoading" class="row justify-content-center">
-  <div class="card w-50">
+  <div class="card card-container">
     <div class="card-header">
       <strong>Ajouter un Moyen de Paiement </strong>
 
@@ -19,7 +19,7 @@
           <button type="button" class="btn btn-block btn-primary" (click)="addExigence()">Ajouter</button>
 
         </div>
-        <div *ngIf="this.success===true" class="row justify-content-center">
+        <div *ngIf="this.success===true" class="row justify-content-center w-100">
             <h6 style="color: green">Le moyen de paiement est ajouté avec succées</h6>
         </div>
       </div>

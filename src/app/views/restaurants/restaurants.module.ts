@@ -39,6 +39,14 @@ import { EvenementListComponent } from './evenement-list/evenement-list.componen
 import { EvenementAddComponent } from './evenement-add/evenement-add.component';
 import { EvenementModifyComponent } from './evenement-modify/evenement-modify.component';
 import { RestaurantAddComponent } from './restaurant-add/restaurant-add.component';
+import { CuisineTypeComponent } from './cuisine-type/cuisine-type.component';
+import { CuisineTypeAddComponent } from './cuisine-type-add/cuisine-type-add.component';
+import { CuisineTypeModifyComponent } from './cuisine-type-modify/cuisine-type-modify.component';
+import { CadresAmbiancesModifyComponent } from './cadres-ambiances-modify/cadres-ambiances-modify.component';
+import { CadresAmbiancesListComponent } from './cadres-ambiances-list/cadres-ambiances-list.component';
+import { CadresAmbiancesAddComponent } from './cadres-ambiances-add/cadres-ambiances-add.component';
+import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import {JwtInterceptor} from '../../helpers/interceptors/jwt.interceptor';
 
 
 @NgModule({
@@ -73,6 +81,12 @@ import { RestaurantAddComponent } from './restaurant-add/restaurant-add.componen
     EvenementAddComponent,
     EvenementModifyComponent,
     RestaurantAddComponent,
+    CuisineTypeComponent,
+    CuisineTypeAddComponent,
+    CuisineTypeModifyComponent,
+    CadresAmbiancesModifyComponent,
+    CadresAmbiancesListComponent,
+    CadresAmbiancesAddComponent,
 
 
   ],
@@ -88,6 +102,7 @@ import { RestaurantAddComponent } from './restaurant-add/restaurant-add.componen
 
 
 
-  ]
+  ],
+
 })
 export class RestaurantsModule { }

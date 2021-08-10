@@ -100,4 +100,12 @@ export class ImageService {
     oReq.send(null);
     return resultObservable;
   }
+  changeActivity(id ,isActive): Observable<any>{
+    const data = {
+      photoId: id,
+      isActive
+    }
+    return this.httpClient.post(environment.apiUrl+"photo/"+"changeActivity", data);
+  }
+
 }

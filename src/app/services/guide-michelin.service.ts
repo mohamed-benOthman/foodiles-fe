@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {environment} from '../../environments/environment';
 import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class GuideMichelinService {
     return  this.http.get(this.endpoint);
   }
 
-  addPaiement(libelle) {
+  addPaiement(libelle) :Observable<any> {
     const data = {
       libelle
     };
@@ -25,7 +26,7 @@ export class GuideMichelinService {
 
   modifyPaiement(id, libelle){
     const data = {
-      idMoyenPaiement: id,
+      idGuideMichelin: id,
       libelle: libelle
     }
 

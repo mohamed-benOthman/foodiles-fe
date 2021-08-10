@@ -79,15 +79,19 @@ export class MoyensPaiementComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       this.isLoading = true;
+      window.location.reload();
+
       this.moyenPaiementService.deletePaiement(this.id).subscribe((res :any)=>{
         this.moyenPaiementService.getAllPaiement().subscribe((res:any)=>{
           this.restaurantslist=res;
+          window.location.reload();
           this.pageSlice = this.restaurantslist.slice(0, this.pageSize);
           this.restaurantsLength = res.length;
           this.isLoading = false;
 
         }, error => {
           this.restaurantslist=res;
+          window.location.reload();
           this.pageSlice = this.restaurantslist.slice(0, this.pageSize);
           this.restaurantsLength = res.length;
           this.isLoading = false;

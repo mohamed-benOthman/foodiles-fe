@@ -12,4 +12,24 @@ export class AmbianceService {
   getAll() {
     return this.http.get(this.endpoint);
   }
+  addCadreAmbiance(libelle) {
+    const data = {
+      libelle
+    };
+    return this.http.post(this.endpoint+"create", data);
+  }
+
+  modifyCadreAmbiance(id, libelle){
+    const data = {
+      idCadreAmbiance: id,
+      libelle: libelle
+    }
+
+    return this.http.post(this.endpoint + "modify", data);
+  }
+
+  deleteCadreAmbiance(id){
+    return this.http.delete(this.endpoint+id);
+  }
+
 }

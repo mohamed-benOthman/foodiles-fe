@@ -25,11 +25,12 @@ export class CommentaireService {
     return this.httpClient.get(this.endpoint );
   }
 
-  modifyCommentaireById(id: string, title: string, comment: string) {
+  modifyCommentaireById(id: string, title: string, comment: string, isActive : boolean) {
     const data = {
       id,
       title,
-      comment
+      comment,
+      isActive
     };
     return this.httpClient.post(this.endpoint + 'modify', data );
   }

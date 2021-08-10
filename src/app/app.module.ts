@@ -18,7 +18,6 @@ import { AppComponent } from './app.component';
 import { DefaultLayoutComponent } from './containers';
 
 import { P404Component } from './views/error/404.component';
-import { P500Component } from './views/error/500.component';
 import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
 
@@ -49,6 +48,8 @@ import { ModalComponent } from './components/modal/modal.component';
 import {CarouselComponent} from 'ngx-bootstrap/carousel';
 import { RatingComponent } from './components/rating/rating.component';
 import {NgbRatingModule} from '@ng-bootstrap/ng-bootstrap';
+import {AuthGuard} from './helpers/auth.guard';
+import {LoginGuard} from './helpers/login.guard';
 
 @NgModule({
   imports: [
@@ -74,10 +75,11 @@ import {NgbRatingModule} from '@ng-bootstrap/ng-bootstrap';
     AppComponent,
     ...APP_CONTAINERS,
     P404Component,
-    P500Component,
+
     LoginComponent,
     RegisterComponent,
     ModalComponent,
+
 
 
 
@@ -87,9 +89,12 @@ import {NgbRatingModule} from '@ng-bootstrap/ng-bootstrap';
       provide: LocationStrategy,
       useClass: HashLocationStrategy
     },
-    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
+     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
+
 
     IconSetService,
+    AuthGuard,
+    LoginGuard
   ],
   exports: [
 

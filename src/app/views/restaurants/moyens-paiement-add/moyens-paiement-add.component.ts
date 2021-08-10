@@ -23,9 +23,13 @@ export class MoyensPaiementAddComponent implements OnInit {
   navigateBack(){
     this.router.navigate([`restaurants/paiement/`]);
   }
-  addExigence() {
+  async addExigence() {
     this.isLoading=true;
-    this.moyenPaiementService.addPaiement(this.libelle).subscribe((res:any)=>{
+    await this.moyenPaiementService.addPaiement(this.libelle).toPromise();
+    this.success=true;
+    this.isLoading=false;
+    setTimeout(()=>this.navigateBack(),1200)
+   /* this.moyenPaiementService.addPaiement(this.libelle).subscribe((res:any)=>{
       this.success=true;
       this.isLoading=false;
       setTimeout(()=>this.navigateBack(),1200)
@@ -33,6 +37,6 @@ export class MoyensPaiementAddComponent implements OnInit {
       this.success=true;
       this.isLoading=false;
       setTimeout(()=>this.navigateBack(),1200)
-    })
+    })*/
   }
 }

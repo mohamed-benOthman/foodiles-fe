@@ -15,7 +15,7 @@ export const navItems: INavData[] = [
   {
     name: 'Liste des Restaurants',
     url: '/restaurants/list',
-    icon: 'cil-apple'
+    icon: 'cil-pizza'
   },
   {
     name: 'Gestion des Images',
@@ -40,18 +40,29 @@ export const navItems: INavData[] = [
   {
     name: 'Guides Michelin ',
     url: '/restaurants/michelin',
-    icon: 'cil-apple'
-  },
-  {
-    name: 'Les menus ',
-    url: '/restaurants/menu',
-    icon: 'cil-burger'
+    icon: 'cil-badge'
   },
   {
     name: 'Evenements',
     url: '/restaurants/evenement-list',
     icon: 'cil-running'
   },
+  {
+    name: 'Types de cuisine',
+    url: '/restaurants/types-cuisines-list',
+    icon: 'cil-fire'
+  },
+  {
+    name: 'Cadres Ambiances',
+    url: '/restaurants/cadre-ambiances-list',
+    icon: 'cil-coffee'
+  },
+  {
+    name: 'Les menus ',
+    url: '/restaurants/menu',
+    icon: 'cil-burger'
+  },
+
   {
     title: true,
     name: 'Les Notifications'

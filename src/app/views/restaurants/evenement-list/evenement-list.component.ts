@@ -31,8 +31,10 @@ export class EvenementListComponent implements OnInit {
   restaurantList$: Observable<any>;
   typeCuisineList$: Observable<CuisineType>;
   restaurantsLength: number;
+  public restaurantId : any;
   restaurantslist: any = [];
   public pageSlice = [];
+  public toRestaurant=false;
   public selectedCuisineType = '';
   public selectedExigenceAlimentaire = '';
   public exigenceAlimentaireList$: Observable<ExigenceAlimentaire>;
@@ -56,12 +58,13 @@ export class EvenementListComponent implements OnInit {
       filter(params => params.id)
 
     ).subscribe(params => {
+      this.restaurantId=params.id;
       if (params.id)
       this.evenementService.getAll().subscribe((res :any)=>{
         this.restaurantslist=res;
         this.restaurantslist = this.restaurantslist.filter((item)=>item.idRestaurant.idRestaurant==params.id)
         this.pageSlice = this.restaurantslist.slice(0, this.pageSize);
-
+        this.toRestaurant=true;
         this.restaurantsLength = res.length;
         this.isLoading = false;
       });
@@ -119,6 +122,9 @@ export class EvenementListComponent implements OnInit {
 
   ajouter(){
     this.router.navigate([`restaurants/evenement-add/`], );
+  }
+  navigateToModifyRestaurant() {
+    this.router.navigate([`restaurants/modify/`], { queryParams: { id: this.restaurantId } });
   }
 
 

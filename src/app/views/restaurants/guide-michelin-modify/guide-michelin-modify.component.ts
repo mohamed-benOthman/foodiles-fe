@@ -3,6 +3,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ExigenceAlimentaireService} from '../../../services/exigence-alimentaire.service';
 import {MoyenPaiementService} from '../../../services/moyen-paiement.service';
 import {filter} from 'rxjs/operators';
+import {GuideMichelinService} from '../../../services/guide-michelin.service';
 
 @Component({
   selector: 'app-guide-michelin-modify',
@@ -19,7 +20,7 @@ export class GuideMichelinModifyComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private router:Router,
     private exigenceService: ExigenceAlimentaireService,
-    private moyenPaiementService: MoyenPaiementService
+    private moyenPaiementService: GuideMichelinService
   ) { }
 
   ngOnInit(): void {

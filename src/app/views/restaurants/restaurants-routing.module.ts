@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
-import {ColorsComponent} from '../theme/colors.component';
-import {TypographyComponent} from '../theme/typography.component';
+
 import {ListeRestaurantsComponent} from './liste-restaurants/liste-restaurants.component';
 import {RestaurantDetailComponent} from './restaurant-detail/restaurant-detail.component';
 import {ImagesManagementComponent} from './images-management/images-management.component';
@@ -31,6 +30,12 @@ import {EvenementListComponent} from './evenement-list/evenement-list.component'
 import {EvenementModifyComponent} from './evenement-modify/evenement-modify.component';
 import {EvenementAddComponent} from './evenement-add/evenement-add.component';
 import {RestaurantAddComponent} from './restaurant-add/restaurant-add.component';
+import {CuisineTypeComponent} from './cuisine-type/cuisine-type.component';
+import {CuisineTypeAddComponent} from './cuisine-type-add/cuisine-type-add.component';
+import {CuisineTypeModifyComponent} from './cuisine-type-modify/cuisine-type-modify.component';
+import {CadresAmbiancesModifyComponent} from './cadres-ambiances-modify/cadres-ambiances-modify.component';
+import {CadresAmbiancesAddComponent} from './cadres-ambiances-add/cadres-ambiances-add.component';
+import {CadresAmbiancesListComponent} from './cadres-ambiances-list/cadres-ambiances-list.component';
 
 const routes: Routes = [
   {
@@ -217,6 +222,27 @@ const routes: Routes = [
         }
       },
       {
+        path: 'types-cuisines-list',
+        component:CuisineTypeComponent ,
+        data: {
+          title: 'Liste des types de cuisines'
+        }
+      },
+      {
+        path: 'types-cuisines-add',
+        component:CuisineTypeAddComponent ,
+        data: {
+          title: 'Ajouter un type de cuisine'
+        }
+      },
+      {
+        path: 'types-cuisines-modify',
+        component:CuisineTypeModifyComponent ,
+        data: {
+          title: 'Modifier un type de cuisine'
+        }
+      },
+      {
         path: 'evenement-list',
         component:EvenementListComponent ,
         data: {
@@ -235,6 +261,27 @@ const routes: Routes = [
         component:EvenementAddComponent ,
         data: {
           title: 'Ajouter un evenement'
+        }
+      },
+      {
+        path: 'cadre-ambiances-modify',
+        component:CadresAmbiancesModifyComponent ,
+        data: {
+          title: 'Modifier un cadre ambiance'
+        }
+      },
+      {
+        path: 'cadre-ambiances-add',
+        component:CadresAmbiancesAddComponent ,
+        data: {
+          title: 'Ajouter un cadre ambiance'
+        }
+      },
+      {
+        path: 'cadre-ambiances-list',
+        component:CadresAmbiancesListComponent ,
+        data: {
+          title: 'Liste des cadres des ambiances'
         }
       },
       {

@@ -9,30 +9,38 @@ import {Router, RouteReuseStrategy} from '@angular/router';
 })
 export class GuideMichelinAddComponent implements OnInit {
   public isLoading = false;
-  public success =false;
+  public success = false;
   public libelle: string = '';
-  constructor(
-    private router:Router,
 
+  constructor(
+    private router: Router,
     private moyenPaiementService: GuideMichelinService
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
   }
-  navigateBack(){
+
+  navigateBack() {
     this.router.navigate([`restaurants/michelin/`]);
   }
-  addExigence() {
-    this.isLoading=true;
-    this.moyenPaiementService.addPaiement(this.libelle).subscribe((res:any)=>{
-      this.success=true;
-      this.isLoading=false;
-      setTimeout(()=>this.navigateBack(),1200)
-    },error => {
-      this.success=true;
-      this.isLoading=false;
-      setTimeout(()=>this.navigateBack(),1200)
-    })
-  }
 
+  async addExigence() {
+    /* this.isLoading=true;
+     this.moyenPaiementService.addPaiement(this.libelle).subscribe((res:any)=>{
+       this.success=true;
+       this.isLoading=false;
+       setTimeout(()=>this.navigateBack(),1200)
+     },error => {
+       this.success=true;
+       this.isLoading=false;
+       setTimeout(()=>this.navigateBack(),1200)
+     })
+   }*/
+    this.isLoading = true;
+    await this.moyenPaiementService.addPaiement(this.libelle).toPromise()
+    this.success = true;
+    this.isLoading = false;
+    setTimeout(() => this.navigateBack(), 1200)
+  }
 }
