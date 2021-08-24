@@ -33,14 +33,14 @@ export class ImageService {
       oReq.send(null);
       return resultObservable;
   }
-  public uploadImage(file: File, idResto): Observable<any> {
+  public uploadImage(file: File, idResto, rang,  ordre): Observable<any> {
     const formData = new FormData();
     formData.append('avatar1', file);
-    formData.append('name', "fksdlfksf");
-    formData.append('typePhoto', '1');
+    formData.append('name', 'fksdlfksf');
+    formData.append('typePhoto', '2');
     formData.append('idResto', idResto);
-    formData.append('rang','1');
-    formData.append('ordre', '1');
+    formData.append('rang', rang);
+    formData.append('ordre', ordre);
     formData.append('emailUser', localStorage.getItem('email'));
 
     const header = new HttpHeaders();
@@ -73,8 +73,8 @@ export class ImageService {
     return environment.imageLocation + path;
   }
 
-  getAll(){
-    return this.httpClient.get(environment.imageLocation+'photo/')
+  getAll() {
+    return this.httpClient.get(environment.imageLocation + 'photo/');
   }
 
   getImageSrcGeneral(filePath): Observable<string> {
@@ -100,12 +100,12 @@ export class ImageService {
     oReq.send(null);
     return resultObservable;
   }
-  changeActivity(id ,isActive): Observable<any>{
+  changeActivity(id , isActive): Observable<any> {
     const data = {
       photoId: id,
       isActive
-    }
-    return this.httpClient.post(environment.apiUrl+"photo/"+"changeActivity", data);
+    };
+    return this.httpClient.post(environment.apiUrl + 'photo/' + 'changeActivity', data);
   }
 
 }

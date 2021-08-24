@@ -38,12 +38,10 @@ export const routes: Routes = [
       title: 'Home'
     },
     children: [
-
-
-
       {
         path: 'dashboard',
-        loadChildren: () => import('./views/dashboard/dashboard.module').then(m => m.DashboardModule)
+        loadChildren: () => import('./views/dashboard/dashboard.module').then(m => m.DashboardModule),
+        canActivate: [AuthGuard]
       },
       {
         path: 'restaurants',
@@ -53,6 +51,11 @@ export const routes: Routes = [
       {
         path: 'notification',
         loadChildren: () => import('./views/notification/notification.module').then(m => m.NotificationModule),
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'users',
+        loadChildren: () => import('./views/users/users.module').then(m => m.UsersModule),
         canActivate: [AuthGuard]
       }
     ]

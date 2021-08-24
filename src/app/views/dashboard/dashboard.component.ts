@@ -86,7 +86,7 @@ export class DashboardComponent implements OnInit {
       label: 'Series A'
     }
   ];
-  public lineChart2Labels: Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
+  public lineChart2Labels: Array<any> = ['', '', '', '', '', '', ''];
   public lineChart2Options: any = {
     tooltips: {
       enabled: false,

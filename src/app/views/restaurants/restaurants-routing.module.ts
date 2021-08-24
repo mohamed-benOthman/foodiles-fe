@@ -36,6 +36,9 @@ import {CuisineTypeModifyComponent} from './cuisine-type-modify/cuisine-type-mod
 import {CadresAmbiancesModifyComponent} from './cadres-ambiances-modify/cadres-ambiances-modify.component';
 import {CadresAmbiancesAddComponent} from './cadres-ambiances-add/cadres-ambiances-add.component';
 import {CadresAmbiancesListComponent} from './cadres-ambiances-list/cadres-ambiances-list.component';
+import {BonplanListComponent} from './bonplan-list/bonplan-list.component';
+import {BonplanAddComponent} from './bonplan-add/bonplan-add.component';
+import {BonplanModifyComponent} from './bonplan-modify/bonplan-modify.component';
 
 const routes: Routes = [
   {
@@ -289,6 +292,27 @@ const routes: Routes = [
         component:SousMenuItemsModifyComponent ,
         data: {
           title: 'Modifier un item du sous menu'
+        }
+      },
+      {
+        path: 'bonplans-list',
+        component:BonplanListComponent ,
+        data: {
+          title: 'Liste des bons plans'
+        }
+      },
+      {
+        path: 'bonplans-add',
+        component:BonplanAddComponent ,
+        data: {
+          title: 'Ajouter un bon plan'
+        }
+      },
+      {
+        path: 'bonplans-modify',
+        component:BonplanModifyComponent ,
+        data: {
+          title: 'Modifier un bon plan'
         }
       },
     ]

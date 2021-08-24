@@ -51,6 +51,7 @@ import {NgbRatingModule} from '@ng-bootstrap/ng-bootstrap';
 import {AuthGuard} from './helpers/auth.guard';
 import {LoginGuard} from './helpers/login.guard';
 
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -79,6 +80,8 @@ import {LoginGuard} from './helpers/login.guard';
     LoginComponent,
     RegisterComponent,
     ModalComponent,
+    
+
 
 
 

@@ -1,0 +1,64 @@
+<div *ngIf="!isLoading" class="row justify-content-center">
+  <div class="card card-container">
+    <div class="card-header">
+      <strong>Ajouter un Bon Plan </strong>
+
+    </div>
+    <div class="card-body">
+      <div class="form-group">
+        <label for="company">Titre</label>
+        <input type="text" class="form-control" id="company" [(ngModel)]="this.titre" placeholder="Ajouter un titre">
+      </div>
+
+      <div class="form-group">
+        <label for="company">Details</label>
+        <textarea type="text" class="form-control" rows="5" id="company" [(ngModel)]="this.details" placeholder="Ajouter un titre"></textarea>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-2 col-12 col-form-label" for="date-input"  >Date de début</label>
+        <div class="col-xl-12 col-12 mb-xl-0 mb-2">
+          <input class="form-control" id="date-input" type="date" name="date-input" placeholder="date" [(ngModel)]="this.dateDebut">
+        </div>
+
+      </div>
+      <div class="form-group row">
+        <label class="col-md-2 col-12 col-form-label" for="date-input">Date de Fin</label>
+        <div class="col-xl-12 col-12 mb-xl-0 mb-2">
+          <input class="form-control" id="date-input" type="date" name="date-input" placeholder="date" [(ngModel)]="this.dateFin">
+        </div>
+
+      </div>
+      <div class="form-group row" >
+        <label class="col-xl-3 col-12 col-form-label" >Restaurant</label>
+        <div class="col-xl-9 col-12">
+          <select id="typeCuisine" [(ngModel)]="restaurant" name="restaurant" class="form-control">
+            <option value="">Restaurant</option>
+            <option *ngFor="let type of restaurantList$ | async" [value]="type.idRestaurant">{{type.Nom}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-md-2 col-12 col-form-label" for="date-input">Photo</label>
+        <div class="col-md-10 col-12">
+          <input class="btn btn-block btn-primary"  type="file" name="file" (change)="uploadFile($event)">
+        </div>
+      </div>
+      <div class="row ">
+        <div class="col-md-6 col-12 mb-md-0 mb-2">
+          <button type="button" class="btn btn-block btn-primary" (click)="navigateBack()">Retourner</button>
+
+        </div>
+        <div class="col-md-6 col-12">
+          <button type="button" class="btn btn-block btn-primary" (click)="addExigence()" [disabled]="this.titre==='' || this.dateFin ==='' || this.dateDebut ===''  ">Ajouter</button>
+
+        </div>
+
+        <div *ngIf="this.success===true" class="row justify-content-center w-100">
+          <h6 style="color: green">ce bon plan est ajouté avec succées</h6>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<div *ngIf="isLoading" class="row justify-content-center"><app-spinner></app-spinner></div>

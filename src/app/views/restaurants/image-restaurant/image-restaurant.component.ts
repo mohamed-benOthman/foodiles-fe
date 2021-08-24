@@ -32,8 +32,11 @@ export class ImageRestaurantComponent implements OnInit {
   public  uploadPourcentage = 0;
   public restoId ;
   public isActive;
+  public isCollapsed=true;
   public deactivate = "Désactiver";
   public activate = "Activer";
+  public rang="";
+  public ordre="";
 
   ngOnInit(): void {
     this.activatedRoute.queryParams.pipe(
@@ -133,7 +136,7 @@ export class ImageRestaurantComponent implements OnInit {
     console.log(event.total);
     /*console.log((event.loaded / event.total) * 100);*/
 
-    this.imageService.uploadImage((event.target as HTMLInputElement).files[0],this.restoId ).pipe(last()).subscribe((res: any) => {
+    this.imageService.uploadImage((event.target as HTMLInputElement).files[0],this.restoId, this.rang, this.ordre ).pipe(last()).subscribe((res: any) => {
       this.isLoading=true;
         if (res.type === HttpEventType.UploadProgress) {
           this.uploadPourcentage = Math.round(res.loaded / res.total * 100);

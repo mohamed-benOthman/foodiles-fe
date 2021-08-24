@@ -47,7 +47,12 @@ import { CadresAmbiancesListComponent } from './cadres-ambiances-list/cadres-amb
 import { CadresAmbiancesAddComponent } from './cadres-ambiances-add/cadres-ambiances-add.component';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {JwtInterceptor} from '../../helpers/interceptors/jwt.interceptor';
+import { BonplanListComponent } from './bonplan-list/bonplan-list.component';
+import { BonplanAddComponent } from './bonplan-add/bonplan-add.component';
+import { BonplanModifyComponent } from './bonplan-modify/bonplan-modify.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { CollapseModule } from 'ngx-bootstrap/collapse';
 
 @NgModule({
   declarations: [
@@ -87,6 +92,10 @@ import {JwtInterceptor} from '../../helpers/interceptors/jwt.interceptor';
     CadresAmbiancesModifyComponent,
     CadresAmbiancesListComponent,
     CadresAmbiancesAddComponent,
+    BonplanListComponent,
+    BonplanAddComponent,
+    BonplanModifyComponent,
+
 
 
   ],
@@ -100,6 +109,7 @@ import {JwtInterceptor} from '../../helpers/interceptors/jwt.interceptor';
     MatDialogModule,
     NgxJsonViewerModule,
 
+    CollapseModule
 
 
   ],
