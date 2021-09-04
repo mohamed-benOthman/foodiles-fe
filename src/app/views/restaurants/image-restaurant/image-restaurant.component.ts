@@ -37,7 +37,8 @@ export class ImageRestaurantComponent implements OnInit {
   public activate = "Activer";
   public rang="";
   public ordre="";
-
+  public emptyString="";
+  public collapsedPhtos=[];
   ngOnInit(): void {
     this.activatedRoute.queryParams.pipe(
       filter(params => params.id)
@@ -49,6 +50,9 @@ export class ImageRestaurantComponent implements OnInit {
         this.restaurantDetails$  = this.restaurantService.getRestaurantById(params.id);
         this.restaurantDetails$.subscribe(async (res) => {
           this.restaurantDetails = res;
+          this.restaurantDetails.photos.map((item:any)=>{
+              this.collapsedPhtos.push(true);
+          })
           this.getImage();
           this.isLoading = false;
         });
@@ -160,4 +164,15 @@ export class ImageRestaurantComponent implements OnInit {
     this.router.navigate([`restaurants/modify/`], { queryParams: { id: this.restoId } });
   }
 
+  modifyImage(idPhoto, rang, ordre){
+    this.imageService.modifyPhoto(idPhoto, rang, ordre).subscribe((res: any) => {
+      this.restaurantDetails$  = this.restaurantService.getRestaurantById(this.restoId);
+      this.restaurantDetails$.subscribe(async (res) => {
+        this.restaurantDetails = res;
+        this.getImage();
+        this.isLoading = false;
+        window.alert("Cette image est modifié avec succées")
+      });
+    });
+  }
 }

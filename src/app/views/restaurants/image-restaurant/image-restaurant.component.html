@@ -51,11 +51,40 @@
   </div>
   <div class="card-body ">
     <div class="row">
-    <div class="col-xl-6 col-12 mb-4" *ngFor="let type of restaurantDetails.photos">
+    <div class="col-xl-6 col-12 mb-4" *ngFor="let type of restaurantDetails.photos;  let i = index" >
+       <div  id="type.idPhoto" [collapse]="collapsedPhtos[i]" [isAnimated]="true">
+         <div class="row">
+      <div class="col-xl-4 col-12 mb-xl-0 mb-2">
+        <div class="form-group">
+          <label for="company">Rang</label>
+          <input type="text" class="form-control" id="company" [(ngModel)]="type.rang" placeholder="Ajouter un rang">
+        </div>
+      </div>
+      <div class="col-xl-4 col-12 mb-xl-0 mb-2">
+        <div class="form-group">
+          <label for="company">Ordre</label>
+          <input type="text" class="form-control" id="company" [(ngModel)]="type.ordre" placeholder="Ajouter un ordre">
+        </div>
+      </div>
+      <div class="col-xl-4 col-12 mb-xl-0 mb-2">
+        <div class="form-group">
+          <label for="company">&nbsp;</label>
+          <button type="button" class="btn btn-block btn-primary"     (click)="modifyImage(type.idPhoto, type.rang, type.ordre)">Confirmer</button>
+        </div>
+
+      </div>
+         </div>
+    </div>
       <div class="image-area">
         <img [src]="type.content"   alt="Preview">
+        
         <a (click)="openDialog(type.idPhoto)" class="remove-image"  style="display: inline;">&#215;</a>
+        
         <a (click)="openDialog2(type.idPhoto, type.isActive)" class="remove-image"  style="display: inline; top:40px">{{type.isActive ? '&#9733;' : '&#9734;' }}</a>
+        
+        <a    (click)="collapsedPhtos[i] = !collapsedPhtos[i]"
+        [attr.aria-expanded]="!collapsedPhtos[i]" aria-controls="collapseBasic" class="remove-image"  style="display: inline; top:95px;"
+        >&#10000;</a>
       </div>
     </div>
 

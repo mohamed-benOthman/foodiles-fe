@@ -108,4 +108,13 @@ export class ImageService {
     return this.httpClient.post(environment.apiUrl + 'photo/' + 'changeActivity', data);
   }
 
+  modifyPhoto(id , rang, ordre): Observable<any> {
+    const data = {
+      photoId: id,
+      rang,
+      ordre
+    };
+    return this.httpClient.post(environment.apiUrl + 'photo/' + 'modify', data);
+  }
+
 }

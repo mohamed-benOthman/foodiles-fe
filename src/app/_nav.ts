@@ -38,7 +38,7 @@ export const navItems: INavData[] = [
     icon: 'cil-bank'
   },
   {
-    name: 'Guides Michelin ',
+    name: 'Récompensé',
     url: '/restaurants/michelin',
     icon: 'cil-badge'
   },
